@@ -46,7 +46,11 @@ network: 192.168.70.128/26
 	```
 6. amf
 	```
+	name: 5gcn-amf
 	ip: 192.168.70.132
+	image: samiemostafavi/expeca-amf
+	environment variables: AMF_INTERFACE_NAME_FOR_NGAP=net1,AMF_INTERFACE_NAME_FOR_N11=net1
+	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.132/26
 	```
 7. smf
 	```
