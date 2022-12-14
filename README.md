@@ -30,7 +30,10 @@ network: 192.168.70.128/26
 	```
 4. udm
 	```
+	name: 5gcn-udm
+	image: samiemostafavi/expeca-udm
 	ip: 192.168.70.137
+	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.137/26
 	```
 5. ausf
 	```
