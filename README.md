@@ -25,6 +25,7 @@ network: 192.168.70.128/26
 	name: 5gcn-udr
 	image: samiemostafavi/expeca-udr
 	ip: 192.168.70.136
+	environment variables: UDR_INTERFACE_NAME_FOR_NUDR=net1
 	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.136/26
 	```
 4. udm
