@@ -25,7 +25,7 @@ network: 192.168.70.128/26
 	name: 5gcn-udr
 	image: samiemostafavi/expeca-udr
 	ip: 192.168.70.136
-	environment variables: UDR_INTERFACE_NAME_FOR_NUDR=net1
+	environment variables: UDR_INTERFACE_NAME_FOR_NUDR=net1,USE_FQDN_DNS=no
 	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.136/26
 	```
 4. udm
@@ -33,7 +33,7 @@ network: 192.168.70.128/26
 	name: 5gcn-udm
 	image: samiemostafavi/expeca-udm
 	ip: 192.168.70.137
-	environment variables: SBI_IF_NAME=net1
+	environment variables: SBI_IF_NAME=net1,USE_FQDN_DNS=no
 	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.137/26
 	```
 5. ausf
