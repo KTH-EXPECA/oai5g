@@ -38,7 +38,11 @@ network: 192.168.70.128/26
 	```
 5. ausf
 	```
+	name: 5gcn-ausf
 	ip: 192.168.70.138
+	image: samiemostafavi/expeca-ausf
+	environment variables: SBI_IF_NAME=net1
+	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.138/26
 	```
 6. amf
 	```
