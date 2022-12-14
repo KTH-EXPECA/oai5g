@@ -36,9 +36,9 @@ network: 192.168.70.128/26
 	```
 	ip: 192.168.70.134
 	cap_add:
-            - NET_ADMIN
-            - SYS_ADMIN
-        cap_drop:
-            - ALL
-        privileged: true
+	    - NET_ADMIN
+	    - SYS_ADMIN
+	cap_drop:
+	    - ALL
+	privileged: true
 	```
