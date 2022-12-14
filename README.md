@@ -62,7 +62,11 @@ network: 192.168.70.128/26
 	```
 8. spgwu
 	```
+	name: 5gcn-spgwu
 	ip: 192.168.70.134
+	image: samiemostafavi/expeca-spgwu
+	environment variables: USE_FQDN_DNS=no
+	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.134/26
 	cap_add:
 	    - NET_ADMIN
 	    - SYS_ADMIN
