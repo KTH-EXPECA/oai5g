@@ -57,7 +57,7 @@ network: 192.168.70.128/26
 	name: 5gcn-smf
 	ip: 192.168.70.133
 	image: samiemostafavi/expeca-smf
-	environment variables: USE_FQDN_DNS=no,SMF_INTERFACE_NAME_FOR_N4=eth0,SMF_INTERFACE_NAME_FOR_SBI=eth0
+	environment variables: USE_FQDN_DNS=no,SMF_INTERFACE_NAME_FOR_N4=net1,SMF_INTERFACE_NAME_FOR_SBI=net1
 	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.133/26
 	```
 8. spgwu
