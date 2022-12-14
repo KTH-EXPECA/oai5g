@@ -17,6 +17,7 @@ network: 192.168.70.128/26
 	name: 5gcn-nrf
 	image: samiemostafavi/expeca-nrf
 	ip: 192.168.70.130
+	environment variables: NRF_INTERFACE_NAME_FOR_SBI=net1
 	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.130/26
 	```
 3. udr
