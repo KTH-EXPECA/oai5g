@@ -18,6 +18,9 @@ docker image tag expeca-ausf samiemostafavi/expeca-ausf
 docker build -t expeca-amf -f amf/Dockerfile ./amf/
 docker image tag expeca-amf samiemostafavi/expeca-amf
 
+docker build -t expeca-smf -f smf/Dockerfile ./smf/
+docker image tag expeca-smf samiemostafavi/expeca-smf
+
 docker build -t expeca-spgwu -f spgwu/Dockerfile ./spgwu/
 docker image tag expeca-spgwu samiemostafavi/expeca-spgwu
 
@@ -27,4 +30,5 @@ docker image push samiemostafavi/expeca-udr
 docker image push samiemostafavi/expeca-udm
 docker image push samiemostafavi/expeca-ausf
 docker image push samiemostafavi/expeca-amf
+docker image push samiemostafavi/expeca-smf
 docker image push samiemostafavi/expeca-spgwu
