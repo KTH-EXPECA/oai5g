@@ -2,15 +2,22 @@
 
 Execution order and conditions:
 
+On worker-3, we choose interface `ens5f0`
 network: 192.168.70.128/26
 
 1. mysql
 	```
-	ip: 192.168.70.131
+	name: 5gcn-mysql
+	image: samiemostafavi/expeca-mysql
+	ip: 192.168.70.131/26
+	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.131/26
 	```
 2. nrf
 	```
+	name: 5gcn-nrf
+	image: samiemostafavi/expeca-nrf
 	ip: 192.168.70.130
+	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.130/26
 	```
 3. udr
 	```
