@@ -84,10 +84,7 @@ network: 192.168.70.128/26
 	
 ## Radio Access Network
 
-
-### gNodeB
-
-1. Create the containers
+### Build containers
 
 	Modify the `gnb.sa.band78.fr1.106PRB.usrpb210.conf` file and add `sdr_addrs` to it.
 
@@ -133,7 +130,20 @@ network: 192.168.70.128/26
 	    env: "@THREAD_PARALLEL_CONFIG@"
 	```	
 
-	Then `USE_SA_TDD_MONO_B2XX` env variable should be used. Then the entrypoint file at `docker/scripts/gnb_entrypoint.sh` kicks in and creates the config file when the container starts. Make sure the following env variables are set when running the container:
+	Then `USE_SA_TDD_MONO_B2XX` env variable should be used. Then the entrypoint file at `docker/scripts/gnb_entrypoint.sh` kicks in and creates the config file when the container starts. 
+	
+	Create the gnb containers
+	```
+	cd ~/openairinterface
+	docker build --target ran-base --tag ran-base:latest --file docker/Dockerfile.base.ubuntu18 .
+	docker build --target ran-build --tag ran-build:latest --file docker/Dockerfile.build.ubuntu18 .
+	docker build --target oai-gnb --tag oai-gnb:latest --file docker/Dockerfile.gNB.ubuntu18 .
+    	docker build --target oai-nr-ue --tag oai-nr-ue:latest --file docker/Dockerfile.nrUE.ubuntu18 .
+	```
+	
+### Run gnodeb
+	
+	Make sure the following env variables are set when running the container:
 	```
 	USE_SA_TDD_MONO_B2XX=
 	GNB_ID=
@@ -153,6 +163,6 @@ network: 192.168.70.128/26
 	```
 	Do not use `USE_B2XX`, `USE_X3XX`, or `USE_N3XX` if the container does not have access to internet.
 	
-### nrUE
+### Run nrUE
 	
 
