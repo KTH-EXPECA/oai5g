@@ -179,12 +179,12 @@ THREAD_PARALLEL_CONFIG=
 ```
 Env variables example in one line:
 ```
-USE_SA_FDD_MONO=yes,GNB_ID=e00,GNB_NAME=gNB-OAI,MCC=001,MNC=01,MNC_LENGTH=2,TAC=1,NSSAI_SST=1,NSSAI_SD=1,AMF_IP_ADDRESS=192.168.70.132,GNB_NGA_IF_NAME=net1,GNB_NGA_IP_ADDRESS=192.168.70.139,GNB_NGU_IF_NAME=net1,GNB_NGU_IP_ADDRESS=192.168.70.139,SDR_ADDRS=addr=10.40.3.3,THREAD_PARALLEL_CONFIG=PARALLEL_SINGLE_THREAD
+USE_SA_FDD_MONO=yes,GNB_ID=e00,GNB_NAME=gNB-OAI,MCC=001,MNC=01,MNC_LENGTH=2,TAC=1,NSSAI_SST=1,NSSAI_SD=1,AMF_IP_ADDRESS=192.168.70.132,GNB_NGA_IF_NAME=net1,GNB_NGA_IP_ADDRESS=192.168.70.139,GNB_NGU_IF_NAME=net1,GNB_NGU_IP_ADDRESS=192.168.70.139,SDR_ADDRS=addr=10.40.3.1,THREAD_PARALLEL_CONFIG=PARALLEL_SINGLE_THREAD
 ```
 
 Labels:
 ```
-capabilities.privileged=true,resources.limits.memory=15000Mi,resources.limits.cpu=12,resources.requests.memory=15000Mi,resources.requests.cpu=12
+networks.1.interface=ens5f0,networks.1.ip=10.40.2.1/16,capabilities.privileged=true,resources.limits.memory=15000Mi,resources.limits.cpu=12,resources.requests.memory=15000Mi,resources.requests.cpu=12
 ```
 
 Do not use `USE_B2XX`, `USE_X3XX`, or `USE_N3XX` if the container does not have access to internet.
