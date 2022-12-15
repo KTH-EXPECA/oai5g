@@ -61,6 +61,7 @@ network: 192.168.70.128/26
 	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.133/26
 	```
 8. spgwu
+	
 	This service is responsible for the 5G egress point. It must be running with more capabalities and permissions compared to the other services:
 	```
 	cap_add:
