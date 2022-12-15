@@ -85,3 +85,8 @@ network: 192.168.70.128/26
 ## Radio Access Network
 
 
+1. gNodeB
+
+
+
+2. nrUE
