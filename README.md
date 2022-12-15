@@ -169,9 +169,14 @@ GNB_NGU_IF_NAME=
 SDR_ADDRS=
 THREAD_PARALLEL_CONFIG=
 ```
-One liner:
+Env variables example in one line:
 ```
 USE_SA_TDD_MONO_B2XX=yes,GNB_ID=0xe00,GNB_NAME=gNB-OAI,MCC=001,MNC=01,MNC_LENGTH=2,TAC=1,NSSAI_SST=1,NSSAI_SD=0x1,AMF_IP_ADDRESS=192.168.70.132,GNB_NGA_IF_NAME=net1,GNB_NGA_IP_ADDRESS=192.168.70.139,GNB_NGU_IF_NAME=net1,SDR_ADDRS="mgmt_addr=10.10.3.3,addr=10.40.3.3",THREAD_PARALLEL_CONFIG=PARALLEL_SINGLE_THREAD
+```
+
+Labels:
+```
+resources.limits.memory=15000Mi,resources.limits.cpu=12,resources.requests.memory=15000Mi,resources.requests.cpu=12
 ```
 
 Do not use `USE_B2XX`, `USE_X3XX`, or `USE_N3XX` if the container does not have access to internet.
