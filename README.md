@@ -85,8 +85,54 @@ network: 192.168.70.128/26
 ## Radio Access Network
 
 
-1. gNodeB
+### gNodeB
 
+1. Create the containers
 
+	Modify the `gnb.sa.band78.fr1.106PRB.usrpb210.conf` file and add `sdr_addrs` to it.
 
-2. nrUE
+	Modify the following block in the file `docker/scripts/gnb_parameters.yaml`. Change the number of PRBs from 51 to 106 and add `key: sdr_addrs` to the configs.
+	
+	```
+	- filePrefix: gnb.sa.band78.fr1.106PRB.usrpb210.conf
+	  outputfilename: "gnb.sa.tdd.b2xx.conf"
+	  config:
+	  - key: gNB_ID
+	    env: "@GNB_ID@"
+	  - key: Active_gNBs
+	    env: "@GNB_NAME@"
+	  - key: gNB_name
+            env: "@GNB_NAME@"
+	  - key: mcc
+	    env: "@MCC@"
+	  - key: mnc
+            env: "@MNC@"
+	  - key: mnc_length
+	    env: "@MNC_LENGTH@"
+	  - key: tracking_area_code
+	    env: "@TAC@"
+	  - key: sst
+	    env: "@NSSAI_SST@"
+	  - key: sd
+	    env: "@NSSAI_SD@"
+	  - key: tracking_area_code
+	    env: "@TAC@"
+	  - key: ipv4
+	    env: "@AMF_IP_ADDRESS@"
+	  - key: GNB_INTERFACE_NAME_FOR_NG_AMF
+	    env: "@GNB_NGA_IF_NAME@"
+	  - key: GNB_IPV4_ADDRESS_FOR_NG_AMF
+	    env: "@GNB_NGA_IP_ADDRESS@"
+	  - key: GNB_INTERFACE_NAME_FOR_NGU
+	    env: "@GNB_NGU_IF_NAME@"
+	  - key: GNB_IPV4_ADDRESS_FOR_NGU
+	    env: "@GNB_NGU_IP_ADDRESS@"
+	  - key: sdr_addrs
+	    env: "@SDR_ADDRS@"
+	  - key: parallel_config
+	    env: "@THREAD_PARALLEL_CONFIG@"
+	```	
+
+### nrUE
+	
+
