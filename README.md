@@ -133,6 +133,8 @@ network: 192.168.70.128/26
 	    env: "@THREAD_PARALLEL_CONFIG@"
 	```	
 
+	Then `USE_SA_TDD_MONO_B2XX` env variable should be used.
+	
 ### nrUE
 	
 
