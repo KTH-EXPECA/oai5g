@@ -102,11 +102,11 @@ network: 192.168.70.128/26
 	  - key: Active_gNBs
 	    env: "@GNB_NAME@"
 	  - key: gNB_name
-            env: "@GNB_NAME@"
+	    env: "@GNB_NAME@"
 	  - key: mcc
 	    env: "@MCC@"
 	  - key: mnc
-            env: "@MNC@"
+	    env: "@MNC@"
 	  - key: mnc_length
 	    env: "@MNC_LENGTH@"
 	  - key: tracking_area_code
