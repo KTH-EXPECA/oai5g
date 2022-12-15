@@ -93,7 +93,7 @@ Copy the conf file to ci-scripts folder
 cp targets/PROJECTS/GENERIC-NR-5GC/CONF/gnb.sa.band78.fr1.106PRB.usrpb210.conf ci-scripts/conf_files/
 ```
 
-Modify the following block in the file `docker/scripts/gnb_parameters.yaml`. Change the number of PRBs from 51 to 106 and add `key: sdr_addrs` to the configs.
+Modify the following block in the file `docker/scripts/gnb_parameters.yaml`. Change the number of PRBs from 51 to 106, change `outputfilename`, and add `key: sdr_addrs` to the configs. Make sure you delete the other `filePrefix` with `outputfilename: "gnb.sa.fdd.conf"`
 	
 ```
 - filePrefix: gnb.sa.band78.fr1.106PRB.usrpb210.conf
