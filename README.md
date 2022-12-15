@@ -132,13 +132,21 @@ Modify the following block in the file `docker/scripts/gnb_parameters.yaml`. Cha
 
 Then `USE_SA_TDD_MONO_B2XX` env variable should be used. Then the entrypoint file at `docker/scripts/gnb_entrypoint.sh` kicks in and creates the config file when the container starts. 
 
-Build the gnb containers
+Build the RAN containers
 ```
 cd ~/openairinterface
 docker build --target ran-base --tag ran-base:latest --file docker/Dockerfile.base.ubuntu18 .
 docker build --target ran-build --tag ran-build:latest --file docker/Dockerfile.build.ubuntu18 .
 docker build --target oai-gnb --tag oai-gnb:latest --file docker/Dockerfile.gNB.ubuntu18 .
 docker build --target oai-nr-ue --tag oai-nr-ue:latest --file docker/Dockerfile.nrUE.ubuntu18 .
+```
+
+Tag and push them
+```
+docker tag oai-gnb:latest samiemostafavi/expeca-oai-gnb:latest
+docker tag oai-nr-ue:latest samiemostafavi/expeca-oai-nr-ue:latest
+docker image push samiemostafavi/expeca-oai-gnb:latest
+docker image push samiemostafavi/expeca-oai-nr-ue:latest
 ```
 	
 ### Run gnodeb
