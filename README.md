@@ -135,6 +135,7 @@ network: 192.168.70.128/26
 
 	Then `USE_SA_TDD_MONO_B2XX` env variable should be used. Then the entrypoint file at `docker/scripts/gnb_entrypoint.sh` kicks in and creates the config file when the container starts. Make sure the following env variables are set when running the container:
 	```
+	USE_SA_TDD_MONO_B2XX=
 	GNB_ID=
 	GNB_NAME=
 	MCC=
