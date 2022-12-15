@@ -61,16 +61,20 @@ network: 192.168.70.128/26
 	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.133/26
 	```
 8. spgwu
+	This service is responsible for the 5G egress point. It must be running with more capabalities and permissions compared to the other services:
 	```
-	name: 5gcn-spgwu
-	ip: 192.168.70.134
-	image: samiemostafavi/expeca-spgwu
-	environment variables: SGW_INTERFACE_NAME_FOR_S1U_S12_S4_UP=net1,SGW_INTERFACE_NAME_FOR_SX=net1,PGW_INTERFACE_NAME_FOR_SGI=net1,USE_FQDN_NRF=no
-	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.134/26,capabilities.privileged=true,capabilities.add.1=NET_ADMIN,capabilities.add.2=SYS_ADMIN,capabilities.drop.1=ALL
 	cap_add:
 	    - NET_ADMIN
 	    - SYS_ADMIN
 	cap_drop:
 	    - ALL
 	privileged: true
+	```
+	Create the container in Openstack with the following parameters
+	```
+	name: 5gcn-spgwu
+	ip: 192.168.70.134
+	image: samiemostafavi/expeca-spgwu
+	environment variables: SGW_INTERFACE_NAME_FOR_S1U_S12_S4_UP=net1,SGW_INTERFACE_NAME_FOR_SX=net1,PGW_INTERFACE_NAME_FOR_SGI=net1,USE_FQDN_NRF=no
+	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.134/26,capabilities.privileged=true,capabilities.add.1=NET_ADMIN,capabilities.add.2=SYS_ADMIN,capabilities.drop.1=ALL
 	```
