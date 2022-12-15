@@ -88,6 +88,11 @@ network: 192.168.70.128/26
 
 Make sure that the config file `gnb.sa.band78.fr1.106PRB.usrpb210.conf` is modified with `sdr_addrs` in it. In addition to that, `usrp_lib.c` must be modified as well to work with E320 SDRs.
 
+Copy the conf file to ci-scripts folder
+```
+cp targets/PROJECTS/GENERIC-NR-5GC/CONF/gnb.sa.band78.fr1.106PRB.usrpb210.conf ci-scripts/conf_files/
+```
+
 Modify the following block in the file `docker/scripts/gnb_parameters.yaml`. Change the number of PRBs from 51 to 106 and add `key: sdr_addrs` to the configs.
 	
 ```
@@ -130,7 +135,7 @@ Modify the following block in the file `docker/scripts/gnb_parameters.yaml`. Cha
     env: "@THREAD_PARALLEL_CONFIG@"
 ```
 
-Then modify the file `docker/scripts/generateTemplate.py` and replace `gnb.sa.band78.fr1.54PRB.usrpb210.conf` with `gnb.sa.band78.fr1.106PRB.usrpb210.conf`.
+Then modify the file `docker/scripts/generateTemplate.py` and replace `gnb.sa.band78.fr1.51PRB.usrpb210.conf` with `gnb.sa.band78.fr1.106PRB.usrpb210.conf`.
 
 Make sure you use `USE_SA_TDD_MONO_B2XX` env variable. Then the entrypoint file at `docker/scripts/gnb_entrypoint.sh` kicks in and creates the config file when the container starts. 
 
