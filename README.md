@@ -130,7 +130,9 @@ Modify the following block in the file `docker/scripts/gnb_parameters.yaml`. Cha
     env: "@THREAD_PARALLEL_CONFIG@"
 ```
 
-Then `USE_SA_TDD_MONO_B2XX` env variable should be used. Then the entrypoint file at `docker/scripts/gnb_entrypoint.sh` kicks in and creates the config file when the container starts. 
+Then modify the file `docker/scripts/generateTemplate.py` and replace `gnb.sa.band78.fr1.54PRB.usrpb210.conf` with `gnb.sa.band78.fr1.106PRB.usrpb210.conf`.
+
+Make sure you use `USE_SA_TDD_MONO_B2XX` env variable. Then the entrypoint file at `docker/scripts/gnb_entrypoint.sh` kicks in and creates the config file when the container starts. 
 
 Build the RAN containers
 ```
