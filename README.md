@@ -86,82 +86,82 @@ network: 192.168.70.128/26
 
 ### Build containers
 
-	Modify the `gnb.sa.band78.fr1.106PRB.usrpb210.conf` file and add `sdr_addrs` to it.
+Modify the `gnb.sa.band78.fr1.106PRB.usrpb210.conf` file and add `sdr_addrs` to it.
 
-	Modify the following block in the file `docker/scripts/gnb_parameters.yaml`. Change the number of PRBs from 51 to 106 and add `key: sdr_addrs` to the configs.
+Modify the following block in the file `docker/scripts/gnb_parameters.yaml`. Change the number of PRBs from 51 to 106 and add `key: sdr_addrs` to the configs.
 	
-	```
-	- filePrefix: gnb.sa.band78.fr1.106PRB.usrpb210.conf
-	  outputfilename: "gnb.sa.tdd.b2xx.conf"
-	  config:
-	  - key: gNB_ID
-	    env: "@GNB_ID@"
-	  - key: Active_gNBs
-	    env: "@GNB_NAME@"
-	  - key: gNB_name
-	    env: "@GNB_NAME@"
-	  - key: mcc
-	    env: "@MCC@"
-	  - key: mnc
-	    env: "@MNC@"
-	  - key: mnc_length
-	    env: "@MNC_LENGTH@"
-	  - key: tracking_area_code
-	    env: "@TAC@"
-	  - key: sst
-	    env: "@NSSAI_SST@"
-	  - key: sd
-	    env: "@NSSAI_SD@"
-	  - key: tracking_area_code
-	    env: "@TAC@"
-	  - key: ipv4
-	    env: "@AMF_IP_ADDRESS@"
-	  - key: GNB_INTERFACE_NAME_FOR_NG_AMF
-	    env: "@GNB_NGA_IF_NAME@"
-	  - key: GNB_IPV4_ADDRESS_FOR_NG_AMF
-	    env: "@GNB_NGA_IP_ADDRESS@"
-	  - key: GNB_INTERFACE_NAME_FOR_NGU
-	    env: "@GNB_NGU_IF_NAME@"
-	  - key: GNB_IPV4_ADDRESS_FOR_NGU
-	    env: "@GNB_NGU_IP_ADDRESS@"
-	  - key: sdr_addrs
-	    env: "@SDR_ADDRS@"
-	  - key: parallel_config
-	    env: "@THREAD_PARALLEL_CONFIG@"
-	```	
+```
+- filePrefix: gnb.sa.band78.fr1.106PRB.usrpb210.conf
+  outputfilename: "gnb.sa.tdd.b2xx.conf"
+  config:
+  - key: gNB_ID
+    env: "@GNB_ID@"
+  - key: Active_gNBs
+    env: "@GNB_NAME@"
+  - key: gNB_name
+    env: "@GNB_NAME@"
+  - key: mcc
+    env: "@MCC@"
+  - key: mnc
+    env: "@MNC@"
+  - key: mnc_length
+    env: "@MNC_LENGTH@"
+  - key: tracking_area_code
+    env: "@TAC@"
+  - key: sst
+    env: "@NSSAI_SST@"
+  - key: sd
+    env: "@NSSAI_SD@"
+  - key: tracking_area_code
+    env: "@TAC@"
+  - key: ipv4
+    env: "@AMF_IP_ADDRESS@"
+  - key: GNB_INTERFACE_NAME_FOR_NG_AMF
+    env: "@GNB_NGA_IF_NAME@"
+  - key: GNB_IPV4_ADDRESS_FOR_NG_AMF
+    env: "@GNB_NGA_IP_ADDRESS@"
+  - key: GNB_INTERFACE_NAME_FOR_NGU
+    env: "@GNB_NGU_IF_NAME@"
+  - key: GNB_IPV4_ADDRESS_FOR_NGU
+    env: "@GNB_NGU_IP_ADDRESS@"
+  - key: sdr_addrs
+    env: "@SDR_ADDRS@"
+  - key: parallel_config
+    env: "@THREAD_PARALLEL_CONFIG@"
+```
 
-	Then `USE_SA_TDD_MONO_B2XX` env variable should be used. Then the entrypoint file at `docker/scripts/gnb_entrypoint.sh` kicks in and creates the config file when the container starts. 
-	
-	Create the gnb containers
-	```
-	cd ~/openairinterface
-	docker build --target ran-base --tag ran-base:latest --file docker/Dockerfile.base.ubuntu18 .
-	docker build --target ran-build --tag ran-build:latest --file docker/Dockerfile.build.ubuntu18 .
-	docker build --target oai-gnb --tag oai-gnb:latest --file docker/Dockerfile.gNB.ubuntu18 .
-    	docker build --target oai-nr-ue --tag oai-nr-ue:latest --file docker/Dockerfile.nrUE.ubuntu18 .
-	```
+Then `USE_SA_TDD_MONO_B2XX` env variable should be used. Then the entrypoint file at `docker/scripts/gnb_entrypoint.sh` kicks in and creates the config file when the container starts. 
+
+Build the gnb containers
+```
+cd ~/openairinterface
+docker build --target ran-base --tag ran-base:latest --file docker/Dockerfile.base.ubuntu18 .
+docker build --target ran-build --tag ran-build:latest --file docker/Dockerfile.build.ubuntu18 .
+docker build --target oai-gnb --tag oai-gnb:latest --file docker/Dockerfile.gNB.ubuntu18 .
+docker build --target oai-nr-ue --tag oai-nr-ue:latest --file docker/Dockerfile.nrUE.ubuntu18 .
+```
 	
 ### Run gnodeb
 	
-	Make sure the following env variables are set when running the container:
-	```
-	USE_SA_TDD_MONO_B2XX=
-	GNB_ID=
-	GNB_NAME=
-	MCC=
-	MNC=
-	MNC_LENGTH=
-	TAC=
-	NSSAI_SST=
-	NSSAI_SD=
-	AMF_IP_ADDRESS=
-	GNB_NGA_IF_NAME=
-	GNB_NGA_IP_ADDRESS=
-	GNB_NGU_IF_NAME=
-	SDR_ADDRS=
-	THREAD_PARALLEL_CONFIG=
-	```
-	Do not use `USE_B2XX`, `USE_X3XX`, or `USE_N3XX` if the container does not have access to internet.
+Make sure the following env variables are set when running the container:
+```
+USE_SA_TDD_MONO_B2XX=
+GNB_ID=
+GNB_NAME=
+MCC=
+MNC=
+MNC_LENGTH=
+TAC=
+NSSAI_SST=
+NSSAI_SD=
+AMF_IP_ADDRESS=
+GNB_NGA_IF_NAME=
+GNB_NGA_IP_ADDRESS=
+GNB_NGU_IF_NAME=
+SDR_ADDRS=
+THREAD_PARALLEL_CONFIG=
+```
+Do not use `USE_B2XX`, `USE_X3XX`, or `USE_N3XX` if the container does not have access to internet.
 	
 ### Run nrUE
 	
