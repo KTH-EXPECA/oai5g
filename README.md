@@ -9,14 +9,14 @@ network: 192.168.70.128/26
 
 1. mysql
 	```
-	name: 5gcn-mysql
+	name: 5gcn-1-mysql
 	image: samiemostafavi/expeca-mysql
 	ip: 192.168.70.131/26
 	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.131/26
 	```
 2. nrf (if want to run with nrf)
 	```
-	name: 5gcn-nrf
+	name: 5gcn-1-nrf
 	image: samiemostafavi/expeca-nrf
 	ip: 192.168.70.130/26
 	environment variables: NRF_INTERFACE_NAME_FOR_SBI=net1
@@ -24,7 +24,7 @@ network: 192.168.70.128/26
 	```
 3. udr
 	```
-	name: 5gcn-udr
+	name: 5gcn-2-udr
 	image: samiemostafavi/expeca-udr
 	ip: 192.168.70.136/26
 	environment variables: UDR_INTERFACE_NAME_FOR_NUDR=net1,USE_FQDN_DNS=no
@@ -33,7 +33,7 @@ network: 192.168.70.128/26
 	Add `REGISTER_NRF=no` to env variables if don't want to run nrf
 4. udm
 	```
-	name: 5gcn-udm
+	name: 5gcn-3-udm
 	image: samiemostafavi/expeca-udm
 	ip: 192.168.70.137/26
 	environment variables: SBI_IF_NAME=net1,USE_FQDN_DNS=no
@@ -42,7 +42,7 @@ network: 192.168.70.128/26
 	Add `REGISTER_NRF=no` to env variables if don't want to run nrf
 5. ausf
 	```
-	name: 5gcn-ausf
+	name: 5gcn-4-ausf
 	ip: 192.168.70.138/26
 	image: samiemostafavi/expeca-ausf
 	environment variables: SBI_IF_NAME=net1,USE_FQDN_DNS=no
@@ -51,7 +51,7 @@ network: 192.168.70.128/26
 	Add `REGISTER_NRF=no` to env variables if don't want to run nrf
 6. amf
 	```
-	name: 5gcn-amf
+	name: 5gcn-5-amf
 	ip: 192.168.70.132/26
 	image: samiemostafavi/expeca-amf
 	environment variables: AMF_INTERFACE_NAME_FOR_NGAP=net1,AMF_INTERFACE_NAME_FOR_N11=net1,USE_FQDN_DNS=no
@@ -60,7 +60,7 @@ network: 192.168.70.128/26
 	Add `NF_REGISTRATION=no,SMF_SELECTION=no` to env variables if don't want to run nrf
 7. smf
 	```
-	name: 5gcn-smf
+	name: 5gcn-6-smf
 	ip: 192.168.70.133/26
 	image: samiemostafavi/expeca-smf
 	environment variables: USE_FQDN_DNS=no,SMF_INTERFACE_NAME_FOR_N4=net1,SMF_INTERFACE_NAME_FOR_SBI=net1
@@ -80,7 +80,7 @@ network: 192.168.70.128/26
 	```
 	Create the container in Openstack with the following parameters
 	```
-	name: 5gcn-spgwu
+	name: 5gcn-7-spgwu
 	ip: 192.168.70.134
 	image: samiemostafavi/expeca-spgwu
 	environment variables: SGW_INTERFACE_NAME_FOR_S1U_S12_S4_UP=net1,SGW_INTERFACE_NAME_FOR_SX=net1,PGW_INTERFACE_NAME_FOR_SGI=net1,USE_FQDN_NRF=no
@@ -189,6 +189,13 @@ SDR_ADDRS
 THREAD_PARALLEL_CONFIG
 USE_ADDITIONAL_OPTIONS
 ```
+
+```
+name: 5g-gnodeb-1
+image: samiemostafavi/expeca-oai-gnb
+ip: 192.168.70.139/26
+```
+
 Env variables example in one line:
 ```
 USE_SA_FDD_MONO=yes,GNB_ID=e00,GNB_NAME=gNB-OAI,MCC=001,MNC=01,MNC_LENGTH=2,TAC=1,NSSAI_SST=1,NSSAI_SD=1,AMF_IP_ADDRESS=192.168.70.132,GNB_NGA_IF_NAME=net1,GNB_NGA_IP_ADDRESS=192.168.70.139,GNB_NGU_IF_NAME=net1,GNB_NGU_IP_ADDRESS=192.168.70.139,SDR_ADDRS=addr=10.40.3.1,THREAD_PARALLEL_CONFIG=PARALLEL_SINGLE_THREAD,USE_ADDITIONAL_OPTIONS=--sa --continuous-tx --usrp-tx-thread-config 1 -E --gNBs.[0].min_rxtxtime 6
