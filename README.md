@@ -14,7 +14,7 @@ network: 192.168.70.128/26
 	ip: 192.168.70.131/26
 	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.131/26
 	```
-2. nrf
+2. nrf (if want to run with nrf)
 	```
 	name: 5gcn-nrf
 	image: samiemostafavi/expeca-nrf
@@ -30,6 +30,7 @@ network: 192.168.70.128/26
 	environment variables: UDR_INTERFACE_NAME_FOR_NUDR=net1,USE_FQDN_DNS=no
 	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.136/26
 	```
+	Add `REGISTER_NRF=no` to env variables if don't want to run nrf
 4. udm
 	```
 	name: 5gcn-udm
@@ -38,6 +39,7 @@ network: 192.168.70.128/26
 	environment variables: SBI_IF_NAME=net1,USE_FQDN_DNS=no
 	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.137/26
 	```
+	Add `REGISTER_NRF=no` to env variables if don't want to run nrf
 5. ausf
 	```
 	name: 5gcn-ausf
@@ -46,6 +48,7 @@ network: 192.168.70.128/26
 	environment variables: SBI_IF_NAME=net1,USE_FQDN_DNS=no
 	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.138/26
 	```
+	Add `REGISTER_NRF=no` to env variables if don't want to run nrf
 6. amf
 	```
 	name: 5gcn-amf
@@ -54,6 +57,7 @@ network: 192.168.70.128/26
 	environment variables: AMF_INTERFACE_NAME_FOR_NGAP=net1,AMF_INTERFACE_NAME_FOR_N11=net1,USE_FQDN_DNS=no
 	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.132/26
 	```
+	Add `NF_REGISTRATION=no,SMF_SELECTION=no` to env variables if don't want to run nrf
 7. smf
 	```
 	name: 5gcn-smf
@@ -62,6 +66,7 @@ network: 192.168.70.128/26
 	environment variables: USE_FQDN_DNS=no,SMF_INTERFACE_NAME_FOR_N4=net1,SMF_INTERFACE_NAME_FOR_SBI=net1
 	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.133/26
 	```
+	Add `REGISTER_NRF=no,DISCOVER_UPF=no` to env variables if don't want to run nrf. Make sure the new `child-entrypoint.sh` runs and adds `oai-spgwu` ip address to `/etc/hosts`.
 8. spgwu
 	
 	This service is responsible for the 5G egress point. It must be running with more capabalities and permissions compared to the other services:
@@ -81,6 +86,8 @@ network: 192.168.70.128/26
 	environment variables: SGW_INTERFACE_NAME_FOR_S1U_S12_S4_UP=net1,SGW_INTERFACE_NAME_FOR_SX=net1,PGW_INTERFACE_NAME_FOR_SGI=net1,USE_FQDN_NRF=no
 	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.134/26,capabilities.privileged=true,capabilities.add.1=NET_ADMIN,capabilities.add.2=SYS_ADMIN,capabilities.drop.1=ALL
 	```
+	
+	Add `REGISTER_NRF=no` to env variables if don't want to run nrf.
 	
 ## Radio Access Network
 
