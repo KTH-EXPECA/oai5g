@@ -158,6 +158,7 @@ docker image push samiemostafavi/expeca-oai-nr-ue:latest
 	
 ### Run gnodeb
 	
+Choose oai-cn5g-net as for the first network.
 Make sure the following env variables are set when running the container:
 ```
 USE_SA_TDD_MONO_B2XX=
