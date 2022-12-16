@@ -58,3 +58,8 @@ ENV DNN_RANGE3="14.1.1.2 - 14.1.1.253"
 ENV DEFAULT_CSCF_IPV4_ADDRESS=127.0.0.1
 ENV ENABLE_USAGE_REPORTING=no
 
+COPY child-entrypoint.sh  /openair-smf/bin/
+RUN chmod +x /openair-smf/bin/child-entrypoint.sh
+
+ENTRYPOINT ["/bin/bash","/openair-smf/bin/child-entrypoint.sh"]
+CMD ["/openair-smf/bin/oai_smf", "-c", "/openair-smf/etc/smf.conf", "-o"]
