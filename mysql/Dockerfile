@@ -1,6 +1,6 @@
 FROM mysql:5.7
 
-COPY database/oai_db2.sql /docker-entrypoint-initdb.d/oai_db.sql
+COPY database/oai_db.sql /docker-entrypoint-initdb.d/oai_db.sql
 
 ENV TZ=Europe/Paris
 ENV MYSQL_DATABASE=oai_db
