@@ -18,7 +18,7 @@ network: 192.168.70.128/26
 	```
 	name: 5gcn-nrf
 	image: samiemostafavi/expeca-nrf
-	ip: 192.168.70.130
+	ip: 192.168.70.130/26
 	environment variables: NRF_INTERFACE_NAME_FOR_SBI=net1
 	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.130/26
 	```
@@ -26,7 +26,7 @@ network: 192.168.70.128/26
 	```
 	name: 5gcn-udr
 	image: samiemostafavi/expeca-udr
-	ip: 192.168.70.136
+	ip: 192.168.70.136/26
 	environment variables: UDR_INTERFACE_NAME_FOR_NUDR=net1,USE_FQDN_DNS=no
 	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.136/26
 	```
@@ -34,14 +34,14 @@ network: 192.168.70.128/26
 	```
 	name: 5gcn-udm
 	image: samiemostafavi/expeca-udm
-	ip: 192.168.70.137
+	ip: 192.168.70.137/26
 	environment variables: SBI_IF_NAME=net1,USE_FQDN_DNS=no
 	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.137/26
 	```
 5. ausf
 	```
 	name: 5gcn-ausf
-	ip: 192.168.70.138
+	ip: 192.168.70.138/26
 	image: samiemostafavi/expeca-ausf
 	environment variables: SBI_IF_NAME=net1,USE_FQDN_DNS=no
 	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.138/26
@@ -49,7 +49,7 @@ network: 192.168.70.128/26
 6. amf
 	```
 	name: 5gcn-amf
-	ip: 192.168.70.132
+	ip: 192.168.70.132/26
 	image: samiemostafavi/expeca-amf
 	environment variables: AMF_INTERFACE_NAME_FOR_NGAP=net1,AMF_INTERFACE_NAME_FOR_N11=net1,USE_FQDN_DNS=no
 	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.132/26
@@ -57,7 +57,7 @@ network: 192.168.70.128/26
 7. smf
 	```
 	name: 5gcn-smf
-	ip: 192.168.70.133
+	ip: 192.168.70.133/26
 	image: samiemostafavi/expeca-smf
 	environment variables: USE_FQDN_DNS=no,SMF_INTERFACE_NAME_FOR_N4=net1,SMF_INTERFACE_NAME_FOR_SBI=net1
 	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.133/26
@@ -158,25 +158,29 @@ docker image push samiemostafavi/expeca-oai-nr-ue:latest
 	
 ### Run gnodeb
 	
-Choose oai-cn5g-net as for the first network.
+Choose the networks as following:
+1. oai-cn5g-net
+2. sdr-net
+
 Make sure the following env variables are set when running the container:
 ```
-USE_SA_TDD_MONO_B2XX=
-GNB_ID=
-GNB_NAME=
-MCC=
-MNC=
-MNC_LENGTH=
-TAC=
-NSSAI_SST=
-NSSAI_SD=
-AMF_IP_ADDRESS=
-GNB_NGA_IF_NAME=
-GNB_NGA_IP_ADDRESS=
-GNB_NGU_IF_NAME=
-GNB_NGU_IP_ADDRESS=
-SDR_ADDRS=
-THREAD_PARALLEL_CONFIG=
+USE_SA_TDD_MONO_B2XX
+GNB_ID
+GNB_NAME
+MCC
+MNC
+MNC_LENGTH
+TAC
+NSSAI_SST
+NSSAI_SD
+AMF_IP_ADDRESS
+GNB_NGA_IF_NAME
+GNB_NGA_IP_ADDRESS
+GNB_NGU_IF_NAME
+GNB_NGU_IP_ADDRESS
+SDR_ADDRS
+THREAD_PARALLEL_CONFIG
+USE_ADDITIONAL_OPTIONS
 ```
 Env variables example in one line:
 ```
@@ -185,7 +189,7 @@ USE_SA_FDD_MONO=yes,GNB_ID=e00,GNB_NAME=gNB-OAI,MCC=001,MNC=01,MNC_LENGTH=2,TAC=
 
 Labels:
 ```
-networks.1.interface=ens5f0,networks.1.ip=10.40.2.1/16,capabilities.privileged=true,resources.limits.memory=32000Mi,resources.limits.cpu=15,resources.requests.memory=32000Mi,resources.requests.cpu=15
+networks.1.interface=ens5f0,networks.1.ip=192.168.70.139/24,networks.2.interface=eno12399np0,networks.2.ip=10.40.2.1/16,capabilities.privileged=true,resources.limits.memory=32000Mi,resources.limits.cpu=15,resources.requests.memory=32000Mi,resources.requests.cpu=15
 ```
 
 Do not use `USE_B2XX`, `USE_X3XX`, or `USE_N3XX` if the container does not have access to internet.
