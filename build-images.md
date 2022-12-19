@@ -1,11 +1,29 @@
 # Build 5G Network Images
 
-The building blocks of our 5g network are containers.
+The building blocks of our 5g network are containers. All components could be divided into:
+
+1. Core Network (CN)
+	1. MySQL
+	2. 
+2. Radio Access Network (RAN)
+	1. gNodeB
+	2. nrUE
 
 
-## Radio Access Network
+## Build CN Images
 
-### GNodeB
+We only take Openairinterface images and add the env variables to them except `SMF` where we need to add `spgwu` hostname since there is no DNS service running in this case.
+
+```
+git clone https://github.com/KTH-EXPECA/oai5g-docker.git
+cd ~/oai5g-docker
+chmod +x build_cn_images.sh
+./build_cn_images.sh
+```
+
+## Build RAN Images
+
+### 1. gNodeB
 
 Make sure that the config file `gnb.sa.band78.fr1.106PRB.usrpb210.conf` is modified with `sdr_addrs` in it. In addition to that, `usrp_lib.c` must be modified as well to work with E320 SDRs.
 
@@ -97,7 +115,7 @@ docker tag oai-nr-ue:latest samiemostafavi/expeca-oai-nr-ue:latest
 docker image push samiemostafavi/expeca-oai-gnb:latest
 ```
 
-### NR-UE
+### 2. nrUE
 
 Build the RAN containers. If you have built `ran-base` and `ran-build` images for `gnodeb`, skip them here.
 ```
