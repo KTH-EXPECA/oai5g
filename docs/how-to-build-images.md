@@ -24,13 +24,12 @@ Apply the changes to `radio/USRP/USERSPACE/LIB/usrp_lib.cpp` according to [here]
 
 ### 1. gNodeB
 
-At ExPECA we use E320 USRP devices. These software-defined radios are very similar to B210. Hence, we use B210's configuration file as the reference.
+At ExPECA we use USRP E320 devices. These software-defined radios are very similar to B210. Hence, we use B210's configuration file as the reference.
 
 Copy the conf file to ci-scripts folder and add the `sdr_addrs` to `RUs`.
 ```
-cp targets/PROJECTS/GENERIC-NR-5GC/CONF/gnb.sa.band78.fr1.106PRB.usrpb210.conf ci-scripts/conf_files/
-vim ci-scripts/conf_files/gnb.sa.band78.fr1.106PRB.usrpb210.conf
-cat ci-scripts/conf_files/gnb.sa.band78.fr1.106PRB.usrpb210.conf
+cp targets/PROJECTS/GENERIC-NR-5GC/CONF/gnb.sa.band78.fr1.106PRB.usrpb210.conf ci-scripts/conf_files/gnb.sa.band78.fr1.106PRB.usrpe320.conf
+vim ci-scripts/conf_files/gnb.sa.band78.fr1.106PRB.usrpe320.conf
 ...
 RUs = (
 {
@@ -52,32 +51,76 @@ RUs = (
 ```
 Note: it is not important which addresses you choose here since they will be overwritten by environment variables later. Just make sure `sdr_addrs="whatever";` is there.
 
-Modify the block with `outputfilename: "gnb.sa.fdd.conf"` in the file `docker/scripts/gnb_parameters.yaml` as shown below
+Modify `gnb_parameters.yaml` file
 ```
 vim docker/scripts/gnb_parameters.yaml
 ```
-
-1. Change `filePrefix` from `gnb.sa.band66.fr1.106PRB.usrpn300.conf` to `gnb.sa.band78.fr1.106PRB.usrpb210.conf`
-2. Add `sdr_addrs` config
+Add the following block to it
 ```
-- key: sdr_addrs
-  env: "@SDR_ADDRS@"
+  - filePrefix: gnb.sa.band78.fr1.106PRB.usrpe320.conf
+    outputfilename: "gnb.sa.tdd.e320.conf"
+    config:
+    - key: gNB_ID
+      env: "@GNB_ID@"
+    - key: Active_gNBs
+      env: "@GNB_NAME@"
+    - key: gNB_name
+      env: "@GNB_NAME@"
+    - key: mcc
+      env: "@MCC@"
+    - key: mnc
+      env: "@MNC@"
+    - key: mnc_length
+      env: "@MNC_LENGTH@"
+    - key: tracking_area_code
+      env: "@TAC@"
+    - key: sst
+      env: "@NSSAI_SST@"
+    - key: sd
+      env: "@NSSAI_SD@"
+    - key: tracking_area_code
+      env: "@TAC@"
+    - key: ipv4
+      env: "@AMF_IP_ADDRESS@"
+    - key: GNB_INTERFACE_NAME_FOR_NG_AMF
+      env: "@GNB_NGA_IF_NAME@"
+    - key: GNB_IPV4_ADDRESS_FOR_NG_AMF
+      env: "@GNB_NGA_IP_ADDRESS@"
+    - key: GNB_INTERFACE_NAME_FOR_NGU
+      env: "@GNB_NGU_IF_NAME@"
+    - key: GNB_IPV4_ADDRESS_FOR_NGU
+      env: "@GNB_NGU_IP_ADDRESS@"
+    - key: att_tx
+      env: "@ATT_TX@"
+    - key: att_rx
+      env: "@ATT_RX@"
+    - key: max_rxgain
+      env: "@MAX_RXGAIN@"
+    - key: sdr_addrs
+      env: "@SDR_ADDRS@"
+    - key: parallel_config
+      env: "@THREAD_PARALLEL_CONFIG@"
 ```
 
 Modify `generateTemplate.py` file
 ```
 vim docker/scripts/generateTemplate.py
 ```
-Replace the following line in the `prefix_outputfile` dict:
+Add the following line to the `prefix_outputfile` dict:
 ```
-"gnb.sa.band66.fr1.106PRB.usrpn300.conf": f'{data[0]["paths"]["dest_dir"]}/{outputfilename}',
-```
-with
-```
-"gnb.sa.band78.fr1.106PRB.usrpb210.conf": f'{data[0]["paths"]["dest_dir"]}/{outputfilename}',
+"gnb.sa.band78.fr1.106PRB.usrpe320.conf": f'{data[0]["paths"]["dest_dir"]}/{outputfilename}',
 ```
 
-Make sure you define `USE_SA_FDD_MONO` environment variable. Then according to `docker/scripts/gnb_entrypoint.sh` our desired config file will be created when the container starts.
+Modify `gnb_entrypoint.sh` file
+```
+vim docker/scripts/gnb_entrypoint.sh
+```
+Add this line after the line that starts with `if [[ -v USE_SA_TDD_MONO_B2XX ]];`:
+```
+if [[ -v USE_SA_TDD_MONO_E320 ]]; then cp $PREFIX/etc/gnb.sa.tdd.e320.conf $PREFIX/etc/gnb.conf; fi
+```
+
+Make sure you define `USE_SA_TDD_MONO_E320` environment variable. Then according to `docker/scripts/gnb_entrypoint.sh` our desired config file will be created when the container starts.
 
 Modify UHD version in base Dockerfile
 ```
@@ -123,7 +166,7 @@ docker image push samiemostafavi/expeca-oai-gnb:latest
 
 Then make sure the following environment variables are set when running the gnodeb container:
 ```
-USE_SA_FDD_MONO
+USE_SA_TDD_MONO_E320
 GNB_ID
 GNB_NAME
 MCC
@@ -137,6 +180,9 @@ GNB_NGA_IF_NAME
 GNB_NGA_IP_ADDRESS
 GNB_NGU_IF_NAME
 GNB_NGU_IP_ADDRESS
+ATT_TX
+ATT_RX
+MAX_RXGAIN
 SDR_ADDRS
 THREAD_PARALLEL_CONFIG
 USE_ADDITIONAL_OPTIONS
