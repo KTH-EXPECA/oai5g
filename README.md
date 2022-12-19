@@ -4,8 +4,8 @@
 
 Execution order and conditions:
 
-On worker-3, we choose interface `ens5f0`
-network: 192.168.70.128/26
+Assume we have reserved a worker node with 2 free baremetal interfaces: `ens5f0` and `eno12399np0`. We choose interface `ens5f0` for the core network and `eno12399np0` the interface that has access to the SDR for gnodeb.
+The core network will use `192.168.70.128/26` subnet on `ens5f0`.
 
 ### 1. MySQL
 
