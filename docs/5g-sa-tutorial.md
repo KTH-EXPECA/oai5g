@@ -1,7 +1,7 @@
 # Bring Up an Standalone 5G Network
 
 
-Assume we have reserved a worker node with 2 free baremetal interfaces: `ens5f0` and `eno12399np0`. We choose interface `ens5f0` for the core network and `eno12399np0` the interface that has access to the SDR for gnodeb.
+Assume we have reserved a worker node with 3 free baremetal interfaces: `ens5f0`, `eno12399np0`, and `eno12409np1`. We choose interface `ens5f0` for the core network, `eno12399np0` for gNodeB's SDR, and `eno12409np1` for nrue's SDR.
 The core network will use `192.168.70.128/26` subnet on `ens5f0`. The following services must be run respectively:
 
 ## A. Core Network
@@ -164,7 +164,7 @@ We add `REGISTER_NRF=no` to env variables if don't want to run nrf.
 	
 name: `5g-gnodeb-1`\
 image: `samiemostafavi/expeca-oai-gnb`\
-networks: 1) `oai-cn5g-net`, 2) `sdr-net`\
+networks: 1) `oai-cn5g-net`, 2) `sdr1-net`\
 env variables:
 ```
 USE_SA_TDD_MONO_E320=yes,GNB_ID=e00,GNB_NAME=gNB-OAI,MCC=001,MNC=01,MNC_LENGTH=2,TAC=1,NSSAI_SST=1,NSSAI_SD=1,AMF_IP_ADDRESS=192.168.70.132,GNB_NGA_IF_NAME=net1,GNB_NGA_IP_ADDRESS=192.168.70.139,GNB_NGU_IF_NAME=net1,GNB_NGU_IP_ADDRESS=192.168.70.139,ATT_TX=0,ATT_RX=0,MAX_RXGAIN=114,SDR_ADDRS=addr=10.40.3.1,THREAD_PARALLEL_CONFIG=PARALLEL_SINGLE_THREAD,USE_ADDITIONAL_OPTIONS=--sa --usrp-tx-thread-config 1 -E --gNBs.[0].min_rxtxtime 6
@@ -178,3 +178,15 @@ networks.1.interface=ens5f0,networks.1.ip=192.168.70.139/26,networks.2.interface
 	
 ### 2. nrUE
 	
+name: `5g-nrue-1`\
+image: `samiemostafavi/expeca-oai-nr-ue`\
+network: `sdr2-net`\
+env variables:
+```
+USE_ADDITIONAL_OPTIONS=-r 106 --numerology 1 --band 78 -C 3619200000 --nokrnmod --sa -E --uicc0.imsi 001010000000001 --uicc0.nssai_sd 1 --usrp-args "addr=10.40.3.2" --ue-fo-compensation --ue-rxgain 120 --ue-txgain 0 --ue-max-power 0
+```
+
+labels:
+```
+networks.1.interface=eno12409np1,networks.1.ip=10.40.2.1/16,capabilities.privileged=true,resources.limits.memory=32000Mi,resources.limits.cpu=10,resources.requests.memory=32000Mi,resources.requests.cpu=10
+```
