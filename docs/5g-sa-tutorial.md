@@ -183,7 +183,7 @@ image: `samiemostafavi/expeca-oai-nr-ue`\
 network: `sdr2-net`\
 env variables:
 ```
-USE_ADDITIONAL_OPTIONS=-r 106 --numerology 1 --band 78 -C 3619200000 --nokrnmod --sa -E --uicc0.imsi 001010000000001 --uicc0.nssai_sd 1 --usrp-args "addr=10.40.3.2" --ue-fo-compensation --ue-rxgain 120 --ue-txgain 0 --ue-max-power 0
+FULL_IMSI=001010000000001,FULL_KEY=fec86ba6eb707ed08905757b1bb44b8f,OPC=C42449363BBAD02B66D16BC975D77CC1,DNN=oai,NSSAI_SST=1,USE_ADDITIONAL_OPTIONS=-r 106 --numerology 1 --band 78 -C 3619200000 --nokrnmod --sa -E --uicc0.imsi 001010000000001 --uicc0.nssai_sd 1 --usrp-args "addr=10.40.3.2" --ue-fo-compensation --ue-rxgain 120 --ue-txgain 0 --ue-max-power 0
 ```
 
 labels:
