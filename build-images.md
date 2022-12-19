@@ -1,21 +1,5 @@
 # Build 5G Network Images
 
-The building blocks of our 5g network are containers. All components could be divided into:
-
-1. Core Network (CN)
-	1. MySQL
-	2. NRF
-	3. UDR
-	4. UDM
-	5. AUSF
-	6. AMF
-	7. SMF
-	8. SPGWU
-2. Radio Access Network (RAN)
-	1. gNodeB
-	2. nrUE
-
-
 ## Build CN Images
 
 We only take Openairinterface images and add the env variables to them except `SMF` where we need to add `spgwu` hostname since there is no DNS service running in this case.
