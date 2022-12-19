@@ -16,7 +16,7 @@ This repository containes all necessary instructions to run an all-container end
 	2. nrUE
 
 
-Admins at ExPECA testbed need to build and push the images to the ExPECA docker registry according to [here](https://github.com/KTH-EXPECA/oai5g-docker/blob/main/docs/how-to-build-images.md).
+Admins at ExPECA testbed need to build and push the images to the ExPECA docker registry using the instructions [here](https://github.com/KTH-EXPECA/oai5g-docker/blob/main/docs/how-to-build-images.md).
 
 Currently the following setup is supported at ExPECA testbed:
 - SDR: USRP E320
