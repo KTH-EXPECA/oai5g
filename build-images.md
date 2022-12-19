@@ -4,7 +4,13 @@ The building blocks of our 5g network are containers. All components could be di
 
 1. Core Network (CN)
 	1. MySQL
-	2. 
+	2. NRF
+	3. UDR
+	4. UDM
+	5. AUSF
+	6. AMF
+	7. SMF
+	8. SPGWU
 2. Radio Access Network (RAN)
 	1. gNodeB
 	2. nrUE
