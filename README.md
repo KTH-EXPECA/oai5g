@@ -1,6 +1,26 @@
 # oai5g-docker
 
-This repository containes all necessary instructions to run an all-container end-to-end 5g network using ExPECA Openstack.
+This repository containes all necessary instructions to run an all-container end-to-end 5g network using ExPECA Openstack. The building blocks of our 5g network are containers. All components could be divided into:
+
+1. Core Network (CN)
+	1. MySQL
+	2. NRF
+	3. UDR
+	4. UDM
+	5. AUSF
+	6. AMF
+	7. SMF
+	8. SPGWU
+2. Radio Access Network (RAN)
+	1. gNodeB
+	2. nrUE
+
+
+Admins at ExPECA testbed need to build and push the images to the ExPECA docker registry according to [here](https://github.com/KTH-EXPECA/oai5g-docker/blob/main/docs/how-to-build-images.md).
+
+Currently the following setup is tested at ExPECA testbed:
+- Band 78
+
 
 Assume we have reserved a worker node with 2 free baremetal interfaces: `ens5f0` and `eno12399np0`. We choose interface `ens5f0` for the core network and `eno12399np0` the interface that has access to the SDR for gnodeb.
 The core network will use `192.168.70.128/26` subnet on `ens5f0`. The following services must be run respectively:
