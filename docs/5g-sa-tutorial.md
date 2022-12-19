@@ -10,7 +10,7 @@ The core network will use `192.168.70.128/26` subnet on `ens5f0`. The following 
 
 name: `5gcn-1-mysql`\
 image: `samiemostafavi/expeca-mysql`\
-ip: `192.168.70.131/26`\
+network: `oai-5gcn-net`\
 labels: 
 ```
 networks.1.interface=ens5f0,networks.1.ip=192.168.70.131/26
@@ -22,7 +22,7 @@ if want to run with nrf
 
 name: `5gcn-1-nrf`\
 image: `samiemostafavi/expeca-nrf`\
-ip: `192.168.70.130/26`\
+network: `oai-5gcn-net`\
 environment variables: 
 ```
 NRF_INTERFACE_NAME_FOR_SBI=net1
@@ -36,7 +36,7 @@ networks.1.interface=ens5f0,networks.1.ip=192.168.70.130/26
 
 name: `5gcn-2-udr`\
 image: `samiemostafavi/expeca-udr`\
-ip: `192.168.70.136/26`\
+network: `oai-5gcn-net`\
 environment variables with `nrf`:
 ```
 UDR_INTERFACE_NAME_FOR_NUDR=net1,USE_FQDN_DNS=no
@@ -55,7 +55,7 @@ We add `REGISTER_NRF=no` to env variables if don't want to run nrf
 	
 name: `5gcn-3-udm`\
 image: `samiemostafavi/expeca-udm`\
-ip: `192.168.70.137/26`\
+network: `oai-5gcn-net`\
 environment variables with `nrf`:
 ```
 SBI_IF_NAME=net1,USE_FQDN_DNS=no
@@ -73,8 +73,8 @@ We add `REGISTER_NRF=no` to env variables if don't want to run nrf
 ### 5. AUSF
 
 name: `5gcn-4-ausf`\
-ip: `192.168.70.138/26`\
 image: `samiemostafavi/expeca-ausf`\
+network: `oai-5gcn-net`\
 environment variables with `nrf`: 
 ```
 SBI_IF_NAME=net1,USE_FQDN_DNS=no
@@ -92,8 +92,8 @@ We add `REGISTER_NRF=no` to env variables if don't want to run nrf
 ### 6. AMF
 
 name: `5gcn-5-amf`\
-ip: `192.168.70.132/26`\
 image: `samiemostafavi/expeca-amf`\
+network: `oai-5gcn-net`\
 environment variables with `nrf`: 
 ```
 AMF_INTERFACE_NAME_FOR_NGAP=net1,AMF_INTERFACE_NAME_FOR_N11=net1,USE_FQDN_DNS=no
@@ -111,8 +111,8 @@ We add `NF_REGISTRATION=no,SMF_SELECTION=no` to env variables if don't want to r
 ### 7. SMF
 
 name: `5gcn-6-smf`\
-ip: `192.168.70.133/26`\
 image: `samiemostafavi/expeca-smf`\
+network: `oai-5gcn-net`\
 environment variables with `nrf`: 
 ```
 USE_FQDN_DNS=no,SMF_INTERFACE_NAME_FOR_N4=net1,SMF_INTERFACE_NAME_FOR_SBI=net1
@@ -141,8 +141,8 @@ privileged: true
 Create the container in Openstack with the following parameters
 
 name: `5gcn-7-spgwu`\
-ip: `192.168.70.134`\
 image: `samiemostafavi/expeca-spgwu`\
+network: `oai-5gcn-net`\
 environment variables with `nrf`:
 ```
 SGW_INTERFACE_NAME_FOR_S1U_S12_S4_UP=net1,SGW_INTERFACE_NAME_FOR_SX=net1,PGW_INTERFACE_NAME_FOR_SGI=net1,USE_FQDN_NRF=no
@@ -164,11 +164,7 @@ We add `REGISTER_NRF=no` to env variables if don't want to run nrf.
 	
 name: `5g-gnodeb-1`\
 image: `samiemostafavi/expeca-oai-gnb`\
-ip: `192.168.70.139/26`\
-networks:
-1. `oai-cn5g-net`
-2. `sdr-net`
-
+networks: 1) `oai-cn5g-net`, 2) `sdr-net`
 env variables:
 ```
 USE_SA_TDD_MONO_E320=yes,GNB_ID=e00,GNB_NAME=gNB-OAI,MCC=001,MNC=01,MNC_LENGTH=2,TAC=1,NSSAI_SST=1,NSSAI_SD=1,AMF_IP_ADDRESS=192.168.70.132,GNB_NGA_IF_NAME=net1,GNB_NGA_IP_ADDRESS=192.168.70.139,GNB_NGU_IF_NAME=net1,GNB_NGU_IP_ADDRESS=192.168.70.139,ATT_TX=0,ATT_RX=0,MAX_RXGAIN=114,SDR_ADDRS=addr=10.40.3.1,THREAD_PARALLEL_CONFIG=PARALLEL_SINGLE_THREAD,USE_ADDITIONAL_OPTIONS=--sa --usrp-tx-thread-config 1 -E --gNBs.[0].min_rxtxtime 6
