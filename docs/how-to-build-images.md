@@ -160,7 +160,6 @@ docker build --target oai-gnb --tag oai-gnb:latest --file docker/Dockerfile.gNB.
 Tag and push them
 ```
 docker tag oai-gnb:latest samiemostafavi/expeca-oai-gnb:latest
-docker tag oai-nr-ue:latest samiemostafavi/expeca-oai-nr-ue:latest
 docker image push samiemostafavi/expeca-oai-gnb:latest
 ```
 
