@@ -7,87 +7,157 @@ Execution order and conditions:
 On worker-3, we choose interface `ens5f0`
 network: 192.168.70.128/26
 
-1. mysql
-	```
-	name: 5gcn-1-mysql
-	image: samiemostafavi/expeca-mysql
-	ip: 192.168.70.131/26
-	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.131/26
-	```
-2. nrf (if want to run with nrf)
-	```
-	name: 5gcn-1-nrf
-	image: samiemostafavi/expeca-nrf
-	ip: 192.168.70.130/26
-	environment variables: NRF_INTERFACE_NAME_FOR_SBI=net1
-	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.130/26
-	```
-3. udr
-	```
-	name: 5gcn-2-udr
-	image: samiemostafavi/expeca-udr
-	ip: 192.168.70.136/26
-	environment variables: UDR_INTERFACE_NAME_FOR_NUDR=net1,USE_FQDN_DNS=no
-	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.136/26
-	```
-	Add `REGISTER_NRF=no` to env variables if don't want to run nrf
-4. udm
-	```
-	name: 5gcn-3-udm
-	image: samiemostafavi/expeca-udm
-	ip: 192.168.70.137/26
-	environment variables: SBI_IF_NAME=net1,USE_FQDN_DNS=no
-	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.137/26
-	```
-	Add `REGISTER_NRF=no` to env variables if don't want to run nrf
-5. ausf
-	```
-	name: 5gcn-4-ausf
-	ip: 192.168.70.138/26
-	image: samiemostafavi/expeca-ausf
-	environment variables: SBI_IF_NAME=net1,USE_FQDN_DNS=no
-	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.138/26
-	```
-	Add `REGISTER_NRF=no` to env variables if don't want to run nrf
-6. amf
-	```
-	name: 5gcn-5-amf
-	ip: 192.168.70.132/26
-	image: samiemostafavi/expeca-amf
-	environment variables: AMF_INTERFACE_NAME_FOR_NGAP=net1,AMF_INTERFACE_NAME_FOR_N11=net1,USE_FQDN_DNS=no
-	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.132/26
-	```
-	Add `NF_REGISTRATION=no,SMF_SELECTION=no` to env variables if don't want to run nrf
-7. smf
-	```
-	name: 5gcn-6-smf
-	ip: 192.168.70.133/26
-	image: samiemostafavi/expeca-smf
-	environment variables: USE_FQDN_DNS=no,SMF_INTERFACE_NAME_FOR_N4=net1,SMF_INTERFACE_NAME_FOR_SBI=net1
-	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.133/26
-	```
-	Add `REGISTER_NRF=no,DISCOVER_UPF=no` to env variables if don't want to run nrf. Make sure the new `child-entrypoint.sh` runs and adds `oai-spgwu` ip address to `/etc/hosts`.
-8. spgwu
+### 1. MySQL
+
+name: `5gcn-1-mysql`\
+image: `samiemostafavi/expeca-mysql`\
+ip: `192.168.70.131/26`\
+labels: 
+```
+networks.1.interface=ens5f0,networks.1.ip=192.168.70.131/26
+```
 	
-	This service is responsible for the 5G egress point. It must be running with more capabalities and permissions compared to the other services:
-	```
-	cap_add:
-	    - NET_ADMIN
-	    - SYS_ADMIN
-	cap_drop:
-	    - ALL
-	privileged: true
-	```
-	Create the container in Openstack with the following parameters
-	```
-	name: 5gcn-7-spgwu
-	ip: 192.168.70.134
-	image: samiemostafavi/expeca-spgwu
-	environment variables: SGW_INTERFACE_NAME_FOR_S1U_S12_S4_UP=net1,SGW_INTERFACE_NAME_FOR_SX=net1,PGW_INTERFACE_NAME_FOR_SGI=net1,USE_FQDN_NRF=no
-	labels: networks.1.interface=ens5f0,networks.1.ip=192.168.70.134/26,capabilities.privileged=true,capabilities.add.1=NET_ADMIN,capabilities.add.2=SYS_ADMIN,capabilities.drop.1=ALL
-	```
+### 2. NRF
+
+if want to run with nrf
+
+name: `5gcn-1-nrf`\
+image: `samiemostafavi/expeca-nrf`\
+ip: `192.168.70.130/26`\
+environment variables: 
+```
+NRF_INTERFACE_NAME_FOR_SBI=net1
+```
+labels:
+```
+networks.1.interface=ens5f0,networks.1.ip=192.168.70.130/26
+```
 	
-	Add `REGISTER_NRF=no` to env variables if don't want to run nrf.
+### 3. UDR
+
+name: `5gcn-2-udr`\
+image: `samiemostafavi/expeca-udr`\
+ip: `192.168.70.136/26`\
+environment variables with `nrf`:
+```
+UDR_INTERFACE_NAME_FOR_NUDR=net1,USE_FQDN_DNS=no
+```
+environment variables without `nrf`:
+```
+UDR_INTERFACE_NAME_FOR_NUDR=net1,USE_FQDN_DNS=no,REGISTER_NRF=no
+```
+labels: 
+```
+networks.1.interface=ens5f0,networks.1.ip=192.168.70.136/26
+```
+We add `REGISTER_NRF=no` to env variables if don't want to run nrf
+
+### 4. UDM
+	
+name: `5gcn-3-udm`\
+image: `samiemostafavi/expeca-udm`\
+ip: `192.168.70.137/26`\
+environment variables with `nrf`:
+```
+SBI_IF_NAME=net1,USE_FQDN_DNS=no
+```
+environment variables without `nrf`:
+```
+SBI_IF_NAME=net1,USE_FQDN_DNS=no,REGISTER_NRF=no
+```
+labels: 
+```
+networks.1.interface=ens5f0,networks.1.ip=192.168.70.137/26
+```
+We add `REGISTER_NRF=no` to env variables if don't want to run nrf
+
+### 5. AUSF
+
+name: `5gcn-4-ausf`\
+ip: `192.168.70.138/26`\
+image: `samiemostafavi/expeca-ausf`\
+environment variables with `nrf`: 
+```
+SBI_IF_NAME=net1,USE_FQDN_DNS=no
+```
+environment variables without `nrf`: 
+```
+SBI_IF_NAME=net1,USE_FQDN_DNS=no,REGISTER_NRF=no
+```
+labels: 
+```
+networks.1.interface=ens5f0,networks.1.ip=192.168.70.138/26
+```
+We add `REGISTER_NRF=no` to env variables if don't want to run nrf
+
+### 6. AMF
+
+name: `5gcn-5-amf`\
+ip: `192.168.70.132/26`\
+image: `samiemostafavi/expeca-amf`\
+environment variables with `nrf`: 
+```
+AMF_INTERFACE_NAME_FOR_NGAP=net1,AMF_INTERFACE_NAME_FOR_N11=net1,USE_FQDN_DNS=no
+```
+environment variables without `nrf`: 
+```
+AMF_INTERFACE_NAME_FOR_NGAP=net1,AMF_INTERFACE_NAME_FOR_N11=net1,USE_FQDN_DNS=no,NF_REGISTRATION=no,SMF_SELECTION=no
+```
+labels: 
+```
+networks.1.interface=ens5f0,networks.1.ip=192.168.70.132/26
+```
+We add `NF_REGISTRATION=no,SMF_SELECTION=no` to env variables if don't want to run nrf
+
+### 7. SMF
+
+name: `5gcn-6-smf`\
+ip: `192.168.70.133/26`\
+image: `samiemostafavi/expeca-smf`\
+environment variables with `nrf`: 
+```
+USE_FQDN_DNS=no,SMF_INTERFACE_NAME_FOR_N4=net1,SMF_INTERFACE_NAME_FOR_SBI=net1
+```
+environment variables without `nrf`: 
+```
+USE_FQDN_DNS=no,SMF_INTERFACE_NAME_FOR_N4=net1,SMF_INTERFACE_NAME_FOR_SBI=net1,REGISTER_NRF=no,DISCOVER_UPF=no
+```
+labels: 
+```
+networks.1.interface=ens5f0,networks.1.ip=192.168.70.133/26
+```
+We add `REGISTER_NRF=no,DISCOVER_UPF=no` to env variables if don't want to run nrf. Make sure the new `child-entrypoint.sh` runs and adds `oai-spgwu` ip address to `/etc/hosts`.
+	
+### 8. SPGWU
+	
+This service is responsible for the 5G egress point. It must be running with more capabalities and permissions compared to the other services:
+```
+cap_add:
+    - NET_ADMIN
+    - SYS_ADMIN
+cap_drop:
+    - ALL
+privileged: true
+```
+Create the container in Openstack with the following parameters
+
+name: `5gcn-7-spgwu`\
+ip: `192.168.70.134`\
+image: `samiemostafavi/expeca-spgwu`\
+environment variables with `nrf`:
+```
+SGW_INTERFACE_NAME_FOR_S1U_S12_S4_UP=net1,SGW_INTERFACE_NAME_FOR_SX=net1,PGW_INTERFACE_NAME_FOR_SGI=net1,USE_FQDN_NRF=no
+```
+environment variables without `nrf`:
+```
+SGW_INTERFACE_NAME_FOR_S1U_S12_S4_UP=net1,SGW_INTERFACE_NAME_FOR_SX=net1,PGW_INTERFACE_NAME_FOR_SGI=net1,USE_FQDN_NRF=no,REGISTER_NRF=no
+```
+labels:
+```
+networks.1.interface=ens5f0,networks.1.ip=192.168.70.134/26,capabilities.privileged=true,capabilities.add.1=NET_ADMIN,capabilities.add.2=SYS_ADMIN,capabilities.drop.1=ALL
+```
+
+We add `REGISTER_NRF=no` to env variables if don't want to run nrf.
 	
 ## Radio Access Network
 
