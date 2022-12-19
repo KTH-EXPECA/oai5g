@@ -6,7 +6,7 @@ We only take Openairinterface images and add the env variables to them except `S
 
 ```
 git clone https://github.com/KTH-EXPECA/oai5g-docker.git
-cd ~/oai5g-docker
+cd ~/oai5g-docker/oai5g-docker/cn
 chmod +x build_cn_images.sh
 ./build_cn_images.sh
 ```
