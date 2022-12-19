@@ -161,24 +161,22 @@ We add `REGISTER_NRF=no` to env variables if don't want to run nrf.
 	
 ## B. Radio Access Network
 	
-### 1. gnodeb
+### 1. GNodeB
 	
-Choose the networks as following:
-1. oai-cn5g-net
-2. sdr-net
+name: `5g-gnodeb-1`\
+image: `samiemostafavi/expeca-oai-gnb`\
+ip: `192.168.70.139/26`\
+networks:
+1. `oai-cn5g-net`
+2. `sdr-net`
 
+env variables:
 ```
-name: 5g-gnodeb-1
-image: samiemostafavi/expeca-oai-gnb
-ip: 192.168.70.139/26
+USE_SA_FDD_MONO=yes,GNB_ID=e00,GNB_NAME=gNB-OAI,MCC=001,MNC=01,MNC_LENGTH=2,TAC=1,NSSAI_SST=1,NSSAI_SD=1,AMF_IP_ADDRESS=192.168.70.132,GNB_NGA_IF_NAME=net1,GNB_NGA_IP_ADDRESS=192.168.70.139,GNB_NGU_IF_NAME=net1,GNB_NGU_IP_ADDRESS=192.168.70.139,SDR_ADDRS=addr=10.40.3.1,THREAD_PARALLEL_CONFIG=PARALLEL_SINGLE_THREAD,USE_ADDITIONAL_OPTIONS=--sa --usrp-tx-thread-config 1 -E --gNBs.[0].min_rxtxtime 6
 ```
+Note: you can try with `--continuous-tx` for better timing stability.
 
-Env variables example in one line:
-```
-USE_SA_FDD_MONO=yes,GNB_ID=e00,GNB_NAME=gNB-OAI,MCC=001,MNC=01,MNC_LENGTH=2,TAC=1,NSSAI_SST=1,NSSAI_SD=1,AMF_IP_ADDRESS=192.168.70.132,GNB_NGA_IF_NAME=net1,GNB_NGA_IP_ADDRESS=192.168.70.139,GNB_NGU_IF_NAME=net1,GNB_NGU_IP_ADDRESS=192.168.70.139,SDR_ADDRS=addr=10.40.3.1,THREAD_PARALLEL_CONFIG=PARALLEL_SINGLE_THREAD,USE_ADDITIONAL_OPTIONS=--sa --continuous-tx --usrp-tx-thread-config 1 -E --gNBs.[0].min_rxtxtime 6
-```
-
-Labels:
+labels:
 ```
 networks.1.interface=ens5f0,networks.1.ip=192.168.70.139/26,networks.2.interface=eno12399np0,networks.2.ip=10.40.2.1/16,capabilities.privileged=true,resources.limits.memory=32000Mi,resources.limits.cpu=15,resources.requests.memory=32000Mi,resources.requests.cpu=15
 ```
