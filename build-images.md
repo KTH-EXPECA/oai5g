@@ -1,4 +1,4 @@
-# Build 5G Containers
+# Build 5G Network Images
 
 The building blocks of our 5g network are containers.
 
