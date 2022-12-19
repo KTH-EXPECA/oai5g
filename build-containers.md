@@ -76,6 +76,7 @@ SDR_ADDRS
 THREAD_PARALLEL_CONFIG
 USE_ADDITIONAL_OPTIONS
 ```
+Do not use `USE_B2XX`, `USE_X3XX`, or `USE_N3XX` if the container does not have access to internet.
 
 Modify the file `docker/scripts/generateTemplate.py` and replace `gnb.sa.band78.fr1.51PRB.usrpb210.conf` with `gnb.sa.band78.fr1.106PRB.usrpb210.conf`.
 
