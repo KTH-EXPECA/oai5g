@@ -161,32 +161,11 @@ We add `REGISTER_NRF=no` to env variables if don't want to run nrf.
 	
 ## B. Radio Access Network
 	
-### Run gnodeb
+### 1. gnodeb
 	
 Choose the networks as following:
 1. oai-cn5g-net
 2. sdr-net
-
-Make sure the following env variables are set when running the container:
-```
-USE_SA_TDD_MONO_B2XX
-GNB_ID
-GNB_NAME
-MCC
-MNC
-MNC_LENGTH
-TAC
-NSSAI_SST
-NSSAI_SD
-AMF_IP_ADDRESS
-GNB_NGA_IF_NAME
-GNB_NGA_IP_ADDRESS
-GNB_NGU_IF_NAME
-GNB_NGU_IP_ADDRESS
-SDR_ADDRS
-THREAD_PARALLEL_CONFIG
-USE_ADDITIONAL_OPTIONS
-```
 
 ```
 name: 5g-gnodeb-1
