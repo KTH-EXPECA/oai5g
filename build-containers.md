@@ -56,6 +56,27 @@ Modify the following block in the file `docker/scripts/gnb_parameters.yaml`. Cha
     env: "@THREAD_PARALLEL_CONFIG@"
 ```
 
+Make sure the following env variables are set when running the container:
+```
+USE_SA_TDD_MONO_B2XX
+GNB_ID
+GNB_NAME
+MCC
+MNC
+MNC_LENGTH
+TAC
+NSSAI_SST
+NSSAI_SD
+AMF_IP_ADDRESS
+GNB_NGA_IF_NAME
+GNB_NGA_IP_ADDRESS
+GNB_NGU_IF_NAME
+GNB_NGU_IP_ADDRESS
+SDR_ADDRS
+THREAD_PARALLEL_CONFIG
+USE_ADDITIONAL_OPTIONS
+```
+
 Modify the file `docker/scripts/generateTemplate.py` and replace `gnb.sa.band78.fr1.51PRB.usrpb210.conf` with `gnb.sa.band78.fr1.106PRB.usrpb210.conf`.
 
 Make sure you use `USE_SA_TDD_MONO_B2XX` env variable. Then the entrypoint file at `docker/scripts/gnb_entrypoint.sh` kicks in and creates the config file when the container starts. 
