@@ -22,6 +22,45 @@ git checkout develop
 
 Apply the changes to `radio/USRP/USERSPACE/LIB/usrp_lib.cpp` according to [here](https://github.com/samiemostafavi/autoran/blob/main/docs/oai-e320.md) to make openairinterface recognize USRP E320.
 
+#### Optional change
+
+You can make the container load the FPGA image everytime it starts, either on nr-UE or gNodeB. 
+
+Add the following commands to the docker files after `COPY --from=gnb-base /usr/local/bin/uhd_find_devices /usr/local/bin`
+```
+vim docker/Dockerfile.nrUE.ubuntu18
+vim docker/Dockerfile.gNB.ubuntu18
+```
+Commands to add:
+```
+# Added for loading e320 image
+COPY --from=gnb-base /usr/local/bin/uhd_image_loader /usr/local/bin
+RUN mkdir -p /usr/local/share/uhd/images
+COPY --from=gnb-base /usr/local/share/uhd/images/usrp_e320_fpga_XG* /usr/local/share/uhd/images/
+```
+Here we copy the image to the container.
+
+Modify `gnb_entrypoint.sh` and `ue_entrypoint.sh` files and add the following line to them, before starting the softmodems:
+```
+vim docker/scripts/gnb_entrypoint.sh
+...
+uhd_image_loader --args "type=e3xx,fpga=XG"
+
+echo "=================================="
+echo "== Starting NR UE soft modem"
+```
+and
+```
+vim docker/scripts/nr_ue_entrypoint.sh
+...
+uhd_image_loader --args "type=e3xx,fpga=XG"
+
+echo "=================================="
+echo "== Starting gNB soft modem"
+```
+Now `uhd_image_loader` runs before every `softmodem` command and prevents initialization errors.
+
+
 ### 1. gNodeB
 
 At ExPECA we use USRP E320 devices. These software-defined radios are very similar to B210. Hence, we use B210's configuration file as the reference.
