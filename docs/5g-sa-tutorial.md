@@ -190,3 +190,7 @@ labels:
 ```
 networks.1.interface=eno12409np1,networks.1.ip=10.40.2.1/16,capabilities.privileged=true,resources.limits.memory=32000Mi,resources.limits.cpu=10,resources.requests.memory=32000Mi,resources.requests.cpu=10
 ```
+
+# References
+
+https://gitlab.eurecom.fr/oai/openairinterface5g/-/blob/develop/doc/NR_SA_CN5G_gNB_USRP_COTS_UE_Tutorial.md
