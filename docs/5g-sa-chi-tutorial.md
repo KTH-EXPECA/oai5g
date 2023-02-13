@@ -1,4 +1,4 @@
-# Bring Up an Standalone 5G Network
+# Bring Up an Standalone 5G Network on ExPECA Chameleaon
 
 
 Assume we have reserved a worker node with 3 free baremetal interfaces: `ens5f0`, `eno12399np0`, and `eno12409np1`. We choose interface `ens5f0` for the core network, `eno12399np0` for gNodeB's SDR, and `eno12409np1` for nrue's SDR.
