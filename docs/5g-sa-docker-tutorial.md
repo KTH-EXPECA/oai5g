@@ -3,9 +3,6 @@
 
 We use 3 servers, Forlong as the core network provider, Finarfin as gnodeb and Fingolfin as nrUE.
 
-Assume we have reserved a worker node with 3 free baremetal interfaces: `ens5f0`, `eno12399np0`, and `eno12409np1`. We choose interface `ens5f0` for the core network, `eno12399np0` for gNodeB's SDR, and `eno12409np1` for nrue's SDR.
- The following services must be run respectively:
-
 ## A. Core Network
 
 The core network will use `192.168.70.128/26` subnet and interface `enx00e04c681994` on Forlong. Create the network with the name `oai-5gcn-net`:
