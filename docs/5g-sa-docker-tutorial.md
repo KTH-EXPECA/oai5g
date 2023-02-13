@@ -88,15 +88,15 @@ image: `samiemostafavi/expeca-ausf`\
 network: `oai-5gcn-net`\
 environment variables with `nrf`: 
 ```
-SBI_IF_NAME=net1,USE_FQDN_DNS=no
+SBI_IF_NAME=eth0,USE_FQDN_DNS=no
 ```
 environment variables without `nrf`: 
 ```
-SBI_IF_NAME=net1,USE_FQDN_DNS=no,REGISTER_NRF=no
+SBI_IF_NAME=eth0,USE_FQDN_DNS=no,REGISTER_NRF=no
 ```
-labels: 
+run: 
 ```
-networks.1.interface=ens5f0,networks.1.ip=192.168.70.138/26
+docker run -d --network oai-5gcn-net --ip 192.168.70.138 -e NRF_INTERFACE_NAME_FOR_SBI='eth0' -e USE_FQDN_DNS='no' -e REGISTER_NRF='no' --name 5gcn-4-ausf samiemostafavi/expeca-ausf
 ```
 We add `REGISTER_NRF=no` to env variables if don't want to run nrf
 
@@ -107,15 +107,15 @@ image: `samiemostafavi/expeca-amf`\
 network: `oai-5gcn-net`\
 environment variables with `nrf`: 
 ```
-AMF_INTERFACE_NAME_FOR_NGAP=net1,AMF_INTERFACE_NAME_FOR_N11=net1,USE_FQDN_DNS=no
+AMF_INTERFACE_NAME_FOR_NGAP=eth0,AMF_INTERFACE_NAME_FOR_N11=eth0,USE_FQDN_DNS=no
 ```
 environment variables without `nrf`: 
 ```
-AMF_INTERFACE_NAME_FOR_NGAP=net1,AMF_INTERFACE_NAME_FOR_N11=net1,USE_FQDN_DNS=no,NF_REGISTRATION=no,SMF_SELECTION=no
+AMF_INTERFACE_NAME_FOR_NGAP=eth0,AMF_INTERFACE_NAME_FOR_N11=eth0,USE_FQDN_DNS=no,NF_REGISTRATION=no,SMF_SELECTION=no
 ```
-labels: 
+run: 
 ```
-networks.1.interface=ens5f0,networks.1.ip=192.168.70.132/26
+docker run -d --network oai-5gcn-net --ip 192.168.70.132 -e AMF_INTERFACE_NAME_FOR_NGAP='eth0' -e AMF_INTERFACE_NAME_FOR_N11='eth0' -e USE_FQDN_DNS='no' -e NF_REGISTRATION='no' -e SMF_SELECTION='no' --name 5gcn-5-amf samiemostafavi/expeca-amf
 ```
 We add `NF_REGISTRATION=no,SMF_SELECTION=no` to env variables if don't want to run nrf
 
@@ -126,15 +126,15 @@ image: `samiemostafavi/expeca-smf`\
 network: `oai-5gcn-net`\
 environment variables with `nrf`: 
 ```
-USE_FQDN_DNS=no,SMF_INTERFACE_NAME_FOR_N4=net1,SMF_INTERFACE_NAME_FOR_SBI=net1
+USE_FQDN_DNS=no,SMF_INTERFACE_NAME_FOR_N4=eth0,SMF_INTERFACE_NAME_FOR_SBI=eth0
 ```
 environment variables without `nrf`: 
 ```
-USE_FQDN_DNS=no,SMF_INTERFACE_NAME_FOR_N4=net1,SMF_INTERFACE_NAME_FOR_SBI=net1,REGISTER_NRF=no,DISCOVER_UPF=no
+USE_FQDN_DNS=no,SMF_INTERFACE_NAME_FOR_N4=eth0,SMF_INTERFACE_NAME_FOR_SBI=eth0,REGISTER_NRF=no,DISCOVER_UPF=no
 ```
-labels: 
+run: 
 ```
-networks.1.interface=ens5f0,networks.1.ip=192.168.70.133/26
+docker run -d --network oai-5gcn-net --ip 192.168.70.133 -e USE_FQDN_DNS='no' -e SMF_INTERFACE_NAME_FOR_N4='eth0' -e SMF_INTERFACE_NAME_FOR_SBI='eth0' -e REGISTER_NRF='no' -e DISCOVER_UPF='no' --name 5gcn-6-smf samiemostafavi/expeca-smf
 ```
 We add `REGISTER_NRF=no,DISCOVER_UPF=no` to env variables if don't want to run nrf. Make sure the new `child-entrypoint.sh` runs and adds `oai-spgwu` ip address to `/etc/hosts`.
 	
@@ -156,15 +156,15 @@ image: `samiemostafavi/expeca-spgwu`\
 network: `oai-5gcn-net`\
 environment variables with `nrf`:
 ```
-SGW_INTERFACE_NAME_FOR_S1U_S12_S4_UP=net1,SGW_INTERFACE_NAME_FOR_SX=net1,PGW_INTERFACE_NAME_FOR_SGI=net1,USE_FQDN_NRF=no
+SGW_INTERFACE_NAME_FOR_S1U_S12_S4_UP=eth0,SGW_INTERFACE_NAME_FOR_SX=eth0,PGW_INTERFACE_NAME_FOR_SGI=eth0,USE_FQDN_NRF=no
 ```
 environment variables without `nrf`:
 ```
-SGW_INTERFACE_NAME_FOR_S1U_S12_S4_UP=net1,SGW_INTERFACE_NAME_FOR_SX=net1,PGW_INTERFACE_NAME_FOR_SGI=net1,USE_FQDN_NRF=no,REGISTER_NRF=no
+SGW_INTERFACE_NAME_FOR_S1U_S12_S4_UP=eth0,SGW_INTERFACE_NAME_FOR_SX=eth0,PGW_INTERFACE_NAME_FOR_SGI=eth0,USE_FQDN_NRF=no,REGISTER_NRF=no
 ```
-labels:
+run:
 ```
-networks.1.interface=ens5f0,networks.1.ip=192.168.70.134/26,capabilities.privileged=true,capabilities.add.1=NET_ADMIN,capabilities.add.2=SYS_ADMIN,capabilities.drop.1=ALL
+docker run -d --network oai-5gcn-net --ip 192.168.70.134 --privileged -e SGW_INTERFACE_NAME_FOR_S1U_S12_S4_UP='eth0' -e SGW_INTERFACE_NAME_FOR_SX='eth0' -e PGW_INTERFACE_NAME_FOR_SGI='eth0' -e USE_FQDN_NRF='no' -e REGISTER_NRF='no' --name 5gcn-7-spgwu samiemostafavi/expeca-spgwu
 ```
 
 We add `REGISTER_NRF=no` to env variables if don't want to run nrf.
