@@ -1,4 +1,12 @@
+# Multi stage build for installing irtt tool in spgwu
+FROM golang:1.19.3 AS goimage
+
+# Install go package
+RUN go install github.com/heistp/irtt/cmd/irtt@latest \
+ && cp $GOPATH/bin/irtt /usr/local/bin/
+
 from oaisoftwarealliance/oai-spgwu-tiny:develop
+COPY --from=goimage /usr/local/bin/irtt /usr/local/bin/
 
 ENV TZ=Europe/Paris
 ENV PID_DIRECTORY=/var/run
