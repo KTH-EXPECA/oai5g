@@ -8,6 +8,10 @@ RUN go install github.com/heistp/irtt/cmd/irtt@latest \
 from oaisoftwarealliance/oai-spgwu-tiny:develop
 COPY --from=goimage /usr/local/bin/irtt /usr/local/bin/
 
+# Install iperf3
+RUN apt-get -y update
+RUN apt-get install -y iperf3
+
 ENV TZ=Europe/Paris
 ENV PID_DIRECTORY=/var/run
 ENV SGW_INTERFACE_NAME_FOR_S1U_S12_S4_UP=eth0
