@@ -75,18 +75,25 @@ Or `networkctl status eth0`:
                       Port: mii
 
 To setup the radio network interfaces, edit these files on UHD 3.15.0.0:
+```
+vim /lib/systemd/network/40-eth0.network
+vim /lib/systemd/network/40-sfp0.network
+```
 
-    vim /etc/systemd/network/eth0.network
-    vim /etc/systemd/network/sfp0.network
+Remove all tmp backup files created by vim or anythin else in the folder.
+```
+rm /lib/systemd/network/.10-eth0.link.un~
+rm /lib/systemd/network/.40-eth0.network.un~
+rm /lib/systemd/network/.40-sfp0.network.un~
+rm /lib/systemd/network/10-eth0.link~
+rm /lib/systemd/network/40-eth0.network~
+rm /lib/systemd/network/40-sfp0.network~
+```
 
-With UHD 4.0.0 and newer:
-
-    vim /lib/systemd/network/40-eth0.network
-    vim /lib/systemd/network/40-sfp0.network
-    
-Then restart `systemd-networkd`:
-
-    systemctl restart systemd-networkd
+Restart `systemd-networkd` and `reboot`
+```
+systemctl restart systemd-networkd
+```
     
 NOTE: Care needs to be taken when editing these files on the device, since `vi` / `vim` sometimes generates undo files (e.g. `/data/network/sfp0.network~`), that systemd-networkd might accidentally pick up.
     
