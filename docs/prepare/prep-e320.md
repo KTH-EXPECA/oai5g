@@ -98,24 +98,17 @@ systemctl restart systemd-networkd
 NOTE: Care needs to be taken when editing these files on the device, since `vi` / `vim` sometimes generates undo files (e.g. `/data/network/sfp0.network~`), that systemd-networkd might accidentally pick up.
     
 For example, for the development devices, we set the `eth0` interface ip to:
-
-    [Network]
-    Address=192.168.2.3/16
-    Gateway=192.168.0.1 
+```
+[Network]
+Address=192.168.2.3/16
+Gateway=192.168.0.1 
+```
 
 In the end, make sure the devices respond to ping and use ssh
-
-    ssh root@192.168.2.3
-    uhd_usrp_probe
-
-For some reason, uhd commands do not work over screen and USB. Run them and confirm the UHD version matches the UHD version of the radio host.
-
-The Streming interface is the SFP interface for transferring the data samples and not management purposes. This interface could be setup over ssh as mentioned above, or using Ansible from the radio host.
-
-        ansible-playbook -i 192.168.2.3, e320_if_up.yml --extra-vars "ip=192.168.20.3/24 mtu_bytes=1500"
-        ansible-playbook -i 192.168.2.4, e320_if_up.yml --extra-vars "ip=192.168.20.4/24 mtu_bytes=1500"
-        
-Then, you should be able to ping E320 from the host.
+```
+ssh root@192.168.2.3
+uhd_usrp_probe
+```
 
 ## Update E320's firmware and FPGA
 
