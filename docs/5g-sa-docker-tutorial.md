@@ -7,7 +7,7 @@ We use 3 servers, Forlong as the core network provider, Finarfin as gnodeb and F
 
 ## A. Core Network
 
-The core network will use `192.168.70.128/26` subnet and interface `enx00e04c681994` on Forlong. Create the network with the name `oai-5gcn-net`:
+The core network will use `192.168.70.128/26` subnet and interface `enx00e04c681994` on Forlong. Make sure the old ` oai-5gcn-net` is cleaned. Create the network with the name `oai-5gcn-net`:
 ```
 sudo sysctl net.ipv4.conf.all.forwarding=1
 sudo iptables -P FORWARD ACCEPT
