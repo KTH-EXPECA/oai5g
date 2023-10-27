@@ -1,6 +1,10 @@
-# oai5g-docker
+# ExPECA Openairinterface5G Setup
 
-This repository containes all necessary instructions to run an all-container end-to-end 5g network using ExPECA Openstack. The building blocks of our 5g network are containers. All components could be divided into:
+This repository containes all necessary information and instructions to select and run Openairinterface5G software on E320 software-defined radios.
+
+The documentation contains the supported versions and/or necessary modifications. It is targeted towards 2 different implementation: 1) fully containerized, 2) bare-metal RAN and containerized CN.
+
+The building blocks of our 5g network are containers. All components could be divided into:
 
 1. Core Network (CN)
 	1. MySQL
@@ -10,15 +14,17 @@ This repository containes all necessary instructions to run an all-container end
 	5. AUSF
 	6. AMF
 	7. SMF
-	8. SPGWU
+	8. SPGWU/UPF
 2. Radio Access Network (RAN)
 	1. gNodeB
 	2. nrUE
 
+## Supported versions
 
-Admins at ExPECA testbed need to build and push the images to the ExPECA docker registry using the instructions [here](https://github.com/KTH-EXPECA/oai5g-docker/blob/main/docs/how-to-build-images.md).
+### Week 47 2022 
 
-Currently the following setup is supported at ExPECA testbed:
-- SDR: USRP E320
-- 5G frequency band: 78, tdd
-- PRBs: 106
+Our Openairinterface flavor supports USRP E320. It is branched from commit [8773e42](https://gitlab.eurecom.fr/oai/openairinterface5g/-/tree/8773e4236316af35ab141eaaccca14bf06fd3f09) which was merged on November 2022.
+
+
+
+
