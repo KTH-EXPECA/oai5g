@@ -18,4 +18,5 @@ export UHD_VERSION=4.3.0.0
 Build
 ```
 ./build_oai -I -w USRP
+./build_oai -w USRP --eNB --UE --nrUE --gNB
 ```
