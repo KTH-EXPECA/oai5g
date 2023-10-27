@@ -1,6 +1,6 @@
 # Baremetal RAN
 
-Clone repo and checkout `expeca-main` branch.
+Clone repo and checkout `expeca-main` branch, commit `680da84`.
 ```
 git clone git@github.com:KTH-EXPECA/openairinterface5g.git
 cd ~/openairinterface5g
