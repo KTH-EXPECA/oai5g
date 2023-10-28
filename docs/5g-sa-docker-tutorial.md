@@ -186,7 +186,7 @@ env variables:
 ```
 USE_SA_TDD_MONO_E320=yes,GNB_ID=e00,GNB_NAME=gNB-OAI,MCC=001,MNC=01,MNC_LENGTH=2,TAC=1,NSSAI_SST=1,NSSAI_SD=1,AMF_IP_ADDRESS=192.168.70.132,GNB_NGA_IF_NAME=enp5s0,GNB_NGA_IP_ADDRESS=192.168.70.139,GNB_NGU_IF_NAME=enp5s0,GNB_NGU_IP_ADDRESS=192.168.70.139,ATT_TX=0,ATT_RX=0,MAX_RXGAIN=114,SDR_ADDRS=addr=10.31.1.2,THREAD_PARALLEL_CONFIG=PARALLEL_SINGLE_THREAD,USE_ADDITIONAL_OPTIONS=--sa --usrp-tx-thread-config 1 -E --gNBs.[0].min_rxtxtime 6
 ```
-Note: you can try with `--continuous-tx` for better timing stability.
+Note: Do not use `--continuous-tx`.
 
 run:
 ```
