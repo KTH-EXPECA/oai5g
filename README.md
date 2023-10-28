@@ -9,15 +9,7 @@ The documentation contains the supported versions and/or necessary modifications
 
 The building blocks of our 5g network are containers. All components could be divided into:
 
-1. Core Network (CN)
-	1. MySQL
-	2. NRF
-	3. UDR
-	4. UDM
-	5. AUSF
-	6. AMF
-	7. SMF
-	8. SPGWU/UPF
+1. Core Network (CN): MySQL, NRF, UDR, UDM, AUSF, AMF, SMF, SPGWU/UPF
 2. Radio Access Network (RAN)
 	1. gNodeB
 	2. nrUE
