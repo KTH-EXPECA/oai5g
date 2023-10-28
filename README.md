@@ -3,7 +3,7 @@
 This repository containes all necessary information and instructions to select and run Openairinterface5G software on E320 software-defined radios.
 
 The documentation contains the supported versions and/or necessary modifications. We cover 3 different implementations: 
-1) Fully containerized using Docker
+1) Fully containerized for Docker
 2) Fully containerized for K8S
 3) Bare-metal RAN and containerized CN
 
