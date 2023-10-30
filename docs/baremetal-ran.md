@@ -15,7 +15,7 @@ export BUILD_UHD_FROM_SOURCE=True
 export UHD_VERSION=4.3.0.0
 ```
 
-Build
+## Build
 ```
 ./build_oai -I -w USRP
 ./build_oai -w USRP --eNB --UE --nrUE --gNB
@@ -24,9 +24,12 @@ Use `-c` to clean the workspace and start from the scratch
 ```
 ./build_oai -c -w USRP --gNB
 ```
+Use `--enable-latseq` to enable LATSEQ latency measurement framework on the relevant branches.
+```
+./build_oai -w USRP --enable-latseq --gNB
+```
 
-
-RUN
+## RUN
 
 gNodeB
 ```
