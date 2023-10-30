@@ -10,6 +10,23 @@ Rule of thumb is to stick with an up-to-date develop branch of openairinterface 
     ```
 - Ubuntu 20.04-generic
 
+
+      
+Use `grub-menu.sh` script to see the installed kernels (Check [here](https://askubuntu.com/questions/838704/grub-reboot-to-specific-kernel) and [here](https://askubuntu.com/questions/1019213/display-grub-menu-and-options-without-rebooting))
+```
+sudo chmod +x grub-menu.sh
+./grub-menu.sh short
+```
+
+Check the index of the kernel you wish to switch to, e.g. `1>6` and run:
+```
+sudo grub-reboot "1>6"
+```
+And reboot
+```
+sudo reboot
+```
+
 Next, we need to install UHD driver on the host. The UHD host version on the E320 must be equal to the one on the host. After installing the desired UHD version on the host, we have to update the radio's UHD if they are not matched.
 
 ``` bash
