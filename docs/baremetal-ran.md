@@ -20,6 +20,10 @@ Build
 ./build_oai -I -w USRP
 ./build_oai -w USRP --eNB --UE --nrUE --gNB
 ```
+Use `-c` to clean the workspace and start from the scratch
+```
+./build_oai -c -w USRP --gNB
+```
 
 
 RUN
