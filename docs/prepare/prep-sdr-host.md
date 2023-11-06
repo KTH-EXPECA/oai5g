@@ -225,11 +225,6 @@ When running openairinterface gnodeb, enodeb, ue, or nrue, according to B210 def
     sudo cpupower idle-set -D 2
     sudo cpupower idle-set --disable-by-latency 0
     ```
-  - Set CPU Governor to `performance`
-    ```
-    sudo apt install cpufrequtils
-    for cpu in $(seq 0 $(($(nproc) -1))) ; do sudo cpufreq-set -c $cpu -g performance ; done
-    ```
  
  5. Set CPU Governor to `performance`
 
