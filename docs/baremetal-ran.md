@@ -43,6 +43,13 @@ nrUE
 sudo ./nr-uesoftmodem -r 106 --numerology 1 --band 78 -C 3619200000 --nokrnmod --sa -E --uicc0.imsi 001010000000001 --uicc0.nssai_sd 1 --usrp-args "mgmt_addr=10.30.10.80,addr=10.30.1.80" --ue-fo-compensation --ue-rxgain 120 --ue-txgain 0 --ue-max-power 0
 ```
 
+Measure bandwidth
+```
+iperf3 -c 12.1.1.1 -u -b 100M --get-server-output
+docker exec 5gcn-7-spgwu iperf3 -c 12.1.1.19 -u -b 100M --get-server-output
+```
+
+
 ## Options
 
 * Switch RLC to unacknowledged mode:
