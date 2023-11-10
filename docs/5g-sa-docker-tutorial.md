@@ -161,14 +161,14 @@ environment variables without `nrf`:
 ```
 SGW_INTERFACE_NAME_FOR_S1U_S12_S4_UP=eth0,SGW_INTERFACE_NAME_FOR_SX=eth0,PGW_INTERFACE_NAME_FOR_SGI=eth0,USE_FQDN_NRF=no,REGISTER_NRF=no
 ```
-run:
+run (with `irtt` and `iperf`):
 ```
-docker run --rm -d --network oai-5gcn-net --ip 192.168.70.134 --privileged -e SGW_INTERFACE_NAME_FOR_S1U_S12_S4_UP='eth0' -e SGW_INTERFACE_NAME_FOR_SX='eth0' -e PGW_INTERFACE_NAME_FOR_SGI='eth0' -e USE_FQDN_NRF='no' -e REGISTER_NRF='no' --name 5gcn-7-spgwu samiemostafavi/expeca-spgwu
+docker run --rm -d --network oai-5gcn-net --ip 192.168.70.134 --privileged -e SGW_INTERFACE_NAME_FOR_S1U_S12_S4_UP='eth0' -e SGW_INTERFACE_NAME_FOR_SX='eth0' -e PGW_INTERFACE_NAME_FOR_SGI='eth0' -e USE_FQDN_NRF='no' -e REGISTER_NRF='no' --name 5gcn-7-spgwu samiemostafavi/expeca-spgwu-irtt
 ```
 
 if running `samiemostafavi/expeca-spgwu-irtt`, run the following commands after the main command to run `irtt` and `iperf3` servers:
 ```
-docker exec -d 5gcn-7-spgwu irtt server
+docker exec -d 5gcn-7-spgwu irtt server -i 0 -d 0 -l 0
 docker exec -d 5gcn-7-spgwu iperf3 -s
 ```
 
