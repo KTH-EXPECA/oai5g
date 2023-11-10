@@ -42,3 +42,24 @@ nrUE
 ```
 sudo ./nr-uesoftmodem -r 106 --numerology 1 --band 78 -C 3619200000 --nokrnmod --sa -E --uicc0.imsi 001010000000001 --uicc0.nssai_sd 1 --usrp-args "mgmt_addr=10.30.10.80,addr=10.30.1.80" --ue-fo-compensation --ue-rxgain 120 --ue-txgain 0 --ue-max-power 0
 ```
+
+## Options
+
+* Switch RLC to unacknowledged mode:
+  ```
+  --gNBs.[0].um_on_default_drb 1
+  ```
+* Set max number of harq retransmissions:
+  ```
+  --MACRLCs.[0].ul_harq_round_max 5
+  --MACRLCs.[0].dl_harq_round_max 5
+  ```
+* Set max MCS index:
+  ```
+  --MACRLCs.[0].dl_max_mcs 28
+  --MACRLCs.[0].ul_max_mcs 28
+  ```
+
+
+More info: https://gitlab.eurecom.fr/oaiworkshop/summerworkshop2023/-/tree/main/ran#macrlcs-section
+
