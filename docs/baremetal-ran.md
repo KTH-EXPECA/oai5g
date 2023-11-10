@@ -49,6 +49,11 @@ iperf3 -c 12.1.1.1 -u -b 100M --get-server-output
 docker exec 5gcn-7-spgwu iperf3 -c 12.1.1.19 -u -b 100M --get-server-output
 ```
 
+Measure latency
+```
+irtt client -i 10ms -d 15m -l 100 -o /home/wlab/irtt_data/sdr5g/rtts_0.json --fill=rand 12.1.1.1
+```
+
 
 ## Options
 
