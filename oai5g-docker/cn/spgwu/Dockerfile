@@ -2,7 +2,7 @@
 FROM golang:1.19.3 AS goimage
 
 # Install go package
-RUN go install github.com/heistp/irtt/cmd/irtt@latest \
+RUN go install github.com/samiemostafavi/nlmt/cmd/irtt@v0.9.15 \
  && cp $GOPATH/bin/irtt /usr/local/bin/
 
 from oaisoftwarealliance/oai-spgwu-tiny:develop
