@@ -5,7 +5,7 @@ FROM golang:1.19.3 AS goimage
 RUN go install github.com/samiemostafavi/nlmt/cmd/irtt@v0.9.15 \
  && cp $GOPATH/bin/irtt /usr/local/bin/
 
-from oaisoftwarealliance/oai-spgwu-tiny:develop
+from oaisoftwarealliance/oai-spgwu-tiny:v1.4.0
 COPY --from=goimage /usr/local/bin/irtt /usr/local/bin/
 
 # Install iperf3

@@ -1,4 +1,4 @@
-from oaisoftwarealliance/oai-amf:develop
+from oaisoftwarealliance/oai-amf:v1.4.0
 
 ENV TZ=Europe/paris
 ENV INSTANCE=0

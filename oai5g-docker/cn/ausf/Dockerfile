@@ -1,4 +1,4 @@
-from oaisoftwarealliance/oai-ausf:develop
+from oaisoftwarealliance/oai-ausf:v1.4.0
 
 ENV TZ=Europe/Paris
 ENV INSTANCE_ID=0

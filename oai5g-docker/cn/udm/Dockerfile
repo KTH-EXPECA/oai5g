@@ -1,4 +1,4 @@
-from oaisoftwarealliance/oai-udm:develop
+from oaisoftwarealliance/oai-udm:v1.4.0
 
 ENV TZ=Europe/Paris
 ENV INSTANCE=0

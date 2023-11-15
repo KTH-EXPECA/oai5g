@@ -1,4 +1,4 @@
-from oaisoftwarealliance/oai-nrf:develop
+from oaisoftwarealliance/oai-nrf:v1.4.0
 
 ENV TZ=Europe/Paris
 ENV NRF_INTERFACE_NAME_FOR_SBI=eth0

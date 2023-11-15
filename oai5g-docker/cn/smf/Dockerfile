@@ -1,4 +1,4 @@
-from oaisoftwarealliance/oai-smf:develop
+from oaisoftwarealliance/oai-smf:v1.4.0
 
 ENV TZ=Europe/Paris
 ENV INSTANCE=0
