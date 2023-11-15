@@ -53,6 +53,10 @@ Measure latency
 ```
 irtt client -i 10ms -d 15m -l 100 -o /home/wlab/irtt_data/sdr5g/rtts_0.json --fill=rand 12.1.1.1
 ```
+or 
+```
+irtt client --tripm=oneway -i 10ms -f 5ms -g m1/feanor -l 100 -m 1 -d 10m -o d --outdir=/tmp/ 12.1.1.1
+```
 
 
 ## Options
