@@ -71,6 +71,11 @@ irtt client -i 10ms -d 15m -l 100 -o /home/wlab/irtt_data/sdr5g/rtts_0.json --fi
   --MACRLCs.[0].dl_max_mcs 28
   --MACRLCs.[0].ul_max_mcs 28
   ```
+* Set UL configured grant:
+  ```
+  --MACRLCs.[0].min_grant_mcs 28
+  --MACRLCs.[0].min_grant_prb 20
+  ```
 
 
 More info: https://gitlab.eurecom.fr/oaiworkshop/summerworkshop2023/-/tree/main/ran#macrlcs-section
