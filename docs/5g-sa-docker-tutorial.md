@@ -171,6 +171,10 @@ if running `samiemostafavi/expeca-spgwu-irtt`, run the following commands after 
 docker exec -d 5gcn-7-spgwu irtt server -i 0 -d 0 -l 0
 docker exec -d 5gcn-7-spgwu iperf3 -s
 ```
+or if you want to save irtt output for example in `/tmp/`, bind it by adding `--mount type=bind,source=/tmp/,target=/tmp/` and then run irtt:
+```
+docker exec -d 5gcn-7-spgwu irtt server -i 0 -d 0 -l 0 -o d --outdir=/tmp/ -q
+```
 
 We add `REGISTER_NRF=no` to env variables if don't want to run nrf.
 	
