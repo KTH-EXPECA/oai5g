@@ -81,6 +81,10 @@ irtt client --tripm=oneway -i 10ms -f 5ms -g m1/feanor -l 100 -m 1 -d 10m -o d -
   --MACRLCs.[0].min_grant_prb 20
   ```
 
+gBodeB run with options:
+```
+sudo ./nr-softmodem -O ../../../targets/PROJECTS/GENERIC-NR-5GC/CONF/gnb.sa.band78.fr1.106PRB.usrpe320.conf --sa --usrp-tx-thread-config 1 -E --gNBs.[0].min_rxtxtime 6 --MACRLCs.[0].ul_harq_round_max 5 --MACRLCs.[0].dl_harq_round_max 5 --MACRLCs.[0].dl_max_mcs 28 --MACRLCs.[0].ul_max_mcs 28 --MACRLCs.[0].min_grant_mcs 28 --MACRLCs.[0].min_grant_prb 20
+```
 
 More info: https://gitlab.eurecom.fr/oaiworkshop/summerworkshop2023/-/tree/main/ran#macrlcs-section
 
