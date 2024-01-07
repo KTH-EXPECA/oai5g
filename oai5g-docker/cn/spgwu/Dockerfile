@@ -2,8 +2,8 @@
 FROM golang:1.19.3 AS goimage
 
 # Install go package
-RUN go install github.com/samiemostafavi/nlmt/cmd/irtt@v0.9.15 \
- && cp $GOPATH/bin/irtt /usr/local/bin/
+RUN go install github.com/samiemostafavi/nlmt/cmd/nlmt@v0.10.3 \
+ && cp $GOPATH/bin/nlmt /usr/local/bin/
 
 from oaisoftwarealliance/oai-spgwu-tiny:v1.4.0
 COPY --from=goimage /usr/local/bin/irtt /usr/local/bin/
