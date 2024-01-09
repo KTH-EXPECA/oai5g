@@ -176,6 +176,11 @@ or if you want to save irtt output for example in `/tmp/`, bind it by adding `-v
 docker exec -d 5gcn-7-spgwu irtt server -i 0 -d 0 -l 0 -o d --outdir=/tmp/ -q
 ```
 
+run nlmt in a while, so when the net print server stops, it keeps searching for it.
+```
+docker exec -d 5gcn-7-spgwu /bin/sh -c 'while true; do nlmt server -n 192.168.2.2:50009 -i 0 -d 0 -l 0 -o d --outdir=/tmp/; sleep 1; done'
+```
+
 We add `REGISTER_NRF=no` to env variables if don't want to run nrf.
 	
 ## B. Radio Access Network
