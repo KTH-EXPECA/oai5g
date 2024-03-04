@@ -3,7 +3,7 @@
 Clone repo and checkout `expeca-main` branch, commit `680da84`.
 ```
 git clone git@github.com:KTH-EXPECA/openairinterface5g.git
-cd ~/openairinterface5g
+cd openairinterface5g
 git checkout expeca-main
 ```
 
@@ -17,6 +17,7 @@ export UHD_VERSION=4.3.0.0
 
 ## Build
 ```
+cd cmake_targets/
 ./build_oai -I -w USRP
 ./build_oai -w USRP --eNB --UE --nrUE --gNB
 ```
