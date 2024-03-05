@@ -19,8 +19,10 @@ export UHD_VERSION=4.3.0.0
 ```
 cd cmake_targets/
 ./build_oai -I -w USRP
-./build_oai -w USRP --eNB --UE --nrUE --gNB
+./build_oai -w USRP --gNB
+./build_oai -w USRP --nrUE
 ```
+
 Use `-c` to clean the workspace and start from the scratch
 ```
 ./build_oai -c -w USRP --gNB
