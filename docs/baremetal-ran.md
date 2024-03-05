@@ -41,7 +41,7 @@ Use `--enable-latseq` to enable LATSEQ latency measurement framework on the rele
 
 gNodeB
 ```
-cd cmake_targets/
+cd cmake_targets/ran_build/build
 sudo ./nr-softmodem -O ../../../targets/PROJECTS/GENERIC-NR-5GC/CONF/gnb.sa.band78.fr1.106PRB.usrpe320.conf --sa --usrp-tx-thread-config 1 -E --gNBs.[0].min_rxtxtime 6
 ```
 
