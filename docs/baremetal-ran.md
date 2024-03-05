@@ -16,7 +16,7 @@ export UHD_VERSION=4.3.0.0
 ```
 
 ## Build
-First step that builds the common libraries for RAN
+First step that builds the common libraries for RAN, needs to be run on both machines ( ue node and gnb node)
 ```
 cd cmake_targets/
 ./build_oai -I -w USRP
