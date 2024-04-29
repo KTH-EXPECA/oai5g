@@ -28,7 +28,7 @@ Second step, builds specific executables for the radio. On UE node, run `--nrUE`
 ./build_oai -w USRP --nrUE
 ```
 
-### Build Command Line Arguemnts and Options
+### Build Command Line Arguments and Options
 
 Use `-c` to clean the workspace and start from the scratch
 ```
