@@ -28,17 +28,6 @@ Second step, builds specific executables for the radio. On UE node, run `--nrUE`
 ./build_oai -w USRP --nrUE
 ```
 
-### Build Command Line Arguments and Options
-
-Use `-c` to clean the workspace and start from the scratch
-```
-./build_oai -c -w USRP --gNB
-```
-Use `--enable-latseq` to enable LATSEQ latency measurement framework on the relevant branches.
-```
-./build_oai -w USRP --enable-latseq --gNB
-```
-
 ## Configuration
 
 Modify the  gNB's config file for example to insert the SDR address.
@@ -79,6 +68,15 @@ irtt client --tripm=oneway -i 10ms -f 5ms -g m1/feanor -l 100 -m 1 -d 10m -o d -
 
 
 ## Options
+
+Use `-c` to clean the workspace and start from the scratch
+```
+./build_oai -c -w USRP --gNB
+```
+Use `--enable-latseq` to enable LATSEQ latency measurement framework on the relevant branches.
+```
+./build_oai -w USRP --enable-latseq --gNB
+```
 
 * Switch RLC to unacknowledged mode:
   ```
