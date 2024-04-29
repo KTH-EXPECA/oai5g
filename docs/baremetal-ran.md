@@ -39,6 +39,13 @@ Use `--enable-latseq` to enable LATSEQ latency measurement framework on the rele
 ./build_oai -w USRP --enable-latseq --gNB
 ```
 
+## Configuration
+
+Modify the  gNB's config file for example to insert the SDR address.
+```
+sudo vim ../../../targets/PROJECTS/GENERIC-NR-5GC/CONF/gnb.sa.band78.fr1.106PRB.usrpe320.conf
+```
+
 ## RUN
 
 gNodeB
