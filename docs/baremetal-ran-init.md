@@ -22,6 +22,11 @@ apt-get install -y --no-install-recommends \
 ```
 
 ```
+export PYENV_ROOT=/root/.pyenv \
+    && export PATH=$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH
+```
+
+```
 set -ex \
     && curl https://pyenv.run | bash \
     && pyenv update \
