@@ -103,5 +103,10 @@ gBodeB run with options:
 sudo ./nr-softmodem -O ../../../targets/PROJECTS/GENERIC-NR-5GC/CONF/gnb.sa.band78.fr1.106PRB.usrpe320.conf --sa --usrp-tx-thread-config 1 -E --gNBs.[0].min_rxtxtime 6 --MACRLCs.[0].ul_harq_round_max 5 --MACRLCs.[0].dl_harq_round_max 5 --MACRLCs.[0].dl_max_mcs 28 --MACRLCs.[0].ul_max_mcs 28 --MACRLCs.[0].min_grant_mcs 28 --MACRLCs.[0].min_grant_prb 20
 ```
 
+* For achieving higher throughput, on the UE side set `max_ldpc_iterations` to higher than 10.
+```
+--max_ldpc_iterations 15
+```
+
 More info: https://gitlab.eurecom.fr/oaiworkshop/summerworkshop2023/-/tree/main/ran#macrlcs-section
 
