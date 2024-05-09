@@ -105,7 +105,7 @@ sudo ./nr-softmodem -O ../../../targets/PROJECTS/GENERIC-NR-5GC/CONF/gnb.sa.band
 
 * For achieving higher throughput, on the UE side set `max_ldpc_iterations` to higher than 10.
 ```
---max_ldpc_iterations 15
+--max-ldpc-iterations 15
 ```
 
 More info: https://gitlab.eurecom.fr/oaiworkshop/summerworkshop2023/-/tree/main/ran#macrlcs-section
