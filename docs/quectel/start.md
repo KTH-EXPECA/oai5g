@@ -1,4 +1,4 @@
-# How to Setup Quectel RM502Q-AE connect to Openairinterface5G
+# How to Setup Quectel to connect to Openairinterface5G
 
 We use the Waveshare 5G quectel module: https://www.waveshare.com/wiki/RM500Q-GL_5G_HAT
 
