@@ -10,7 +10,6 @@ First we start by writing a simcard for Openairinterface 5G.
 
 The simacards we have are: https://osmocom.org/projects/cellular-infrastructure/wiki/SysmoISIM-SJA5
 
-
 Clone the following repo from Symcom
 ```
 git clone https://gitea.osmocom.org/sim-card/pysim.git
@@ -27,6 +26,9 @@ Insert the simcard first, the card reader blinks, and
 - Insert Access control code (ACC) after `--acc` (not required but so far we followed openairinterface)
 
 More info find here: https://osmocom.org/projects/pysim/wiki/PySim-prog
+
+You can look at the entries in openairinterface sql database: https://gitlab.eurecom.fr/oai/openairinterface5g/-/blob/develop/doc/tutorial_resources/oai-cn5g/database/oai_db.sql?ref_type=heads
+to get KI and OPC.
 
 Run the command as:
 ```
