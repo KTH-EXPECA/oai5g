@@ -23,6 +23,8 @@ Insert the simcard first, the card reader blinks, and
 - Insert the APN name after `-n` e.g. `OpenAirInterface`
 - Insert IMSI after `-i` e.g. `001010000000001`
 
+More info find here: https://osmocom.org/projects/pysim/wiki/PySim-prog
+
 Run the command as:
 ```
 ./pySim-prog.py -p 0 -t sysmoISIM-SJA5 -a 85017255 -x 001 -y 01 -i 001010000000001 -s 8988211000001139297 -n OpenAirInterface -k fec86ba6eb707ed08905757b1bb44b8f -o C42449363BBAD02B66D16BC975D77CC1 --acc 0001
