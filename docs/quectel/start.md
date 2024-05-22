@@ -8,6 +8,9 @@ First we start by writing a simcard for Openairinterface 5G.
 
 ## Writing the Symcom Sim Card
 
+The simacards we have are: https://osmocom.org/projects/cellular-infrastructure/wiki/SysmoISIM-SJA5
+
+
 Clone the following repo from Symcom
 ```
 git clone https://gitea.osmocom.org/sim-card/pysim.git
