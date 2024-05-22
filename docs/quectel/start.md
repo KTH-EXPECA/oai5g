@@ -10,7 +10,7 @@ First we start by writing a simcard for Openairinterface 5G.
 First, follow the instructions in [NR_SA_Tutorial_OAI_5CN5G](https://gitlab.eurecom.fr/oai/openairinterface5g/-/blob/develop/doc/NR_SA_Tutorial_OAI_CN5G.md).
 
 
-Second, follow the instructions *only* of sections 3.1 & 3.2 & 4.1 & 4.2 in [NR_SA_Tutorial_COTS_UE] (https://gitlab.eurecom.fr/oai/openairinterface5g/-/blob/develop/doc/NR_SA_Tutorial_COTS_UE.md)
+Second, follow the instructions *only* of sections 3.1 & 3.2 & 4.1 & 4.2 in [NR_SA_Tutorial_COTS_UE](https://gitlab.eurecom.fr/oai/openairinterface5g/-/blob/develop/doc/NR_SA_Tutorial_COTS_UE.md)
 
 *Note*: In Section 3.1, do not use git checkout v4.6.0.0, instead use "git checkout v4.3.0.0"
 
