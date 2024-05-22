@@ -18,10 +18,13 @@ git clone https://gitea.osmocom.org/sim-card/pysim.git
 
 Insert the simcard first, the card reader blinks, and
 
-- Read the ADM value from the invoice of the simcard, insert it after `-a`
-- Insert MCC after `-x` e.g. `001` and MNC after `-y` e.g. `01`
-- Insert the APN name after `-n` e.g. `OpenAirInterface`
-- Insert IMSI after `-i` e.g. `001010000000001`
+- Read the ADM value from the invoice for each simcard, insert it after `-a`.
+- Insert MCC after `-x` e.g. `001` and MNC after `-y` e.g. `01`, same for all simcards.
+- Insert the Operator name after `-n` e.g. `OpenAirInterface`, same for all simcards.
+- Insert IMSI after `-i` e.g. `001010000000001`, you have to increase the number for each sim e.g. `001010000000002` and `001010000000003`.
+- Insert KI after `-k` and OPC `-o`, they should be the same for all simcards.
+- Insert ICCID after `-s` by reading it for each simcard from the invoice.
+- Insert Access control code (ACC) after `--acc` (not required but so far we followed openairinterface)
 
 More info find here: https://osmocom.org/projects/pysim/wiki/PySim-prog
 
