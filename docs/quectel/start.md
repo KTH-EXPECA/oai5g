@@ -12,7 +12,9 @@ Follow the instructions in sections 3.1 and 3.2 and 4.1 and 4.2 in [NR_SA_Tutori
 
 In section 3.1, use "git checkout v4.3.0.0" instead of "git checkout v4.6.0.0"
 
-## 2) Program Symcom SIM cards
+## 2) Bring Up the 5G network
+
+## 3) Program Symcom SIM cards
 
 The simacards we have are: https://osmocom.org/projects/cellular-infrastructure/wiki/SysmoISIM-SJA5
 
@@ -56,7 +58,7 @@ For our particular setup, the format of the command to program the SIM card is:
 
 Log the command and the old IMSI and the new IMSI for bookkeeping purposes
 
-## 3) Configure Quectel module
+## 4) Configure Quectel module
 
 Next, we need to configure the quectel module via AT commands. For this purpose there are python scripts next to this markdown file.
 You can check all the AT commands (here)[https://files.waveshare.com/upload/7/78/Quectel_RG50xQ_RM5xxQ_Series_AT_Commands_Manual_V1.2.pdf].
@@ -71,7 +73,7 @@ at+qcfg="usbnet",1
 ```
 Then, unplug the USB cable and replug it. The ECM driver kicks in and you should see a new interface e.g. `ex...`.
 
-## 4) Turn off the module
+## 5) Turn off the module
 
 Turn off the radio module by running:
 ```
@@ -81,8 +83,6 @@ or the AT command
 ```
 at+cfun=0
 ```
-
-## 5) Bring Up the 5G network
 
 ## 6) Turn on the module
 
