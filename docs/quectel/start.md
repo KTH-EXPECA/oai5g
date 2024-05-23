@@ -1,8 +1,10 @@
 # How to Setup Quectel to connect to Openairinterface5G
 
-We use the Waveshare 5G quectel module: https://www.waveshare.com/wiki/RM500Q-GL_5G_HAT
+We use the Quectel RM502Q-AE 5G module found in (waveshare)[https://www.waveshare.com/wiki/RM500Q-GL_5G_HAT]
 
-We connect it via USB3 to an Ubuntu 20.04 system.
+We connect it via USB3 to an Ubuntu 20.04 system
+
+We use the sysmocom SIM cards found in (osmocom)[https://osmocom.org/projects/cellular-infrastructure/wiki/SysmoISIM-SJA5]
 
 ## 1) Set up OAI CN5G and OAI gNB at the same Ubuntu PC
 
@@ -14,9 +16,7 @@ In section 3.1, use "git checkout v4.3.0.0" instead of "git checkout v4.6.0.0"
 
 ## 2) Bring Up the 5G network
 
-## 3) Program Symcom SIM cards
-
-The simacards we have are: https://osmocom.org/projects/cellular-infrastructure/wiki/SysmoISIM-SJA5
+## 3) Program the sysmocom SIM cards
 
 Clone the following repository from Symcom:
 
