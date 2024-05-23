@@ -12,7 +12,7 @@ Follow the instructions in [NR_SA_Tutorial_OAI_5CN5G](https://gitlab.eurecom.fr/
 
 Follow the instructions in sections 3.1 and 3.2 and 4.1 and 4.2 in [NR_SA_Tutorial_COTS_UE](https://gitlab.eurecom.fr/oai/openairinterface5g/-/blob/develop/doc/NR_SA_Tutorial_COTS_UE.md)
 
-In section 3.1, use "git checkout v4.3.0.0" instead of "git checkout v4.6.0.0"
+In section 3.1, use '''git checkout v4.3.0.0''' instead of "git checkout v4.6.0.0"
 
 ## 2) Bring Up the 5G network
 
@@ -58,9 +58,9 @@ For our particular setup, the format of the command to program the SIM card is:
 
 Log the command and the old IMSI and the new IMSI for bookkeeping purposes
 
-Add new IMSI at *oai-cn5g/oai_db.sql* file in the two tables and adjust the static IP address
+Add new IMSI at *oai-cn5g/database/oai_db.sql* file in the two tables and adjust the static IP address
 
-Add a new entry at *oai-cn5g/users.conf* file
+Add a new entry at *oai-cn5g/conf/users.conf* file
 
 Insert SIM card into Quectel module
 
