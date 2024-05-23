@@ -111,13 +111,13 @@ Create an iperf3 server at the Ubuntu PC where the OAICN5G is hosted:
 docker exec -it oai-ext-dn iperf3 -s
 ```
 
-(DOWLINK) Make the oai-ext-dn network function send traffic to UE for 20 seconds:
+(Downlink) Make the oai-ext-dn network function send traffic to UE for 20 seconds:
 
 ```
-iperf3 -c -R 192.168.70.135 -t 20
+iperf3 -c  192.168.70.135 -R  -t 20
 ```
 
-(UPLINK) Send traffic from UE to the oai-ext-dn network function for 20 seconds:
+(Uplink) Send traffic from UE to the oai-ext-dn network function for 20 seconds:
 
 ```
 iperf3 -c 192.168.70.135 -t 20
