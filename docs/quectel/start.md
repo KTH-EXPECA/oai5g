@@ -54,6 +54,8 @@ For our particular setup, the format of the command to program the SIM card is:
 ./pySim-prog.py -p 0 -t sysmoISIM-SJA5 -a *ADM* -s *ICCID* -i 0010100000000*xx* -x 001 -y 01 -n OpenAirInterface -k fec86ba6eb707ed08905757b1bb44b8f -o C42449363BBAD02B66D16BC975D77CC1 --acc 0001
 ```
 
+Log the command and the old IMSI and the new IMSI for bookkeeping purposes
+
 ## 3) Configure Quectel module
 
 Next, we need to configure the quectel module via AT commands. For this purpose there are python scripts next to this markdown file.
