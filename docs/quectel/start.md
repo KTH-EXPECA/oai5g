@@ -27,7 +27,7 @@ cd pysim
 
 Take a photo of the SIM card
 
-Insert it at the SIM card reader (gold side of chip must be close to HID logo)
+Insert it at the SIM card reader (gold side of the chip must be close to the HID logo of the reader)
 
 (Optional) Read a few details of the SIM card
 
