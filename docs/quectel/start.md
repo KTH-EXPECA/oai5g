@@ -4,7 +4,7 @@ We use the [RM500Q-GL 5G HAT COTS UE](https://www.waveshare.com/wiki/RM500Q-GL_5
 
 We connect it via USB3 to an Ubuntu 20.04 system
 
-We program the [green sysmocom SIM cards](https://osmocom.org/projects/cellular-infrastructure/wiki/SysmoISIM-SJA5) to register it to our OAI 5G SA network
+We program the [blue sysmocom SIM cards](https://osmocom.org/projects/cellular-infrastructure/wiki/SysmoISIM-SJA5) to register it to our OAI 5G SA network
 
 ## 1) Set up OAI CN5G and OAI gNB at the same Ubuntu PC
 
@@ -25,7 +25,9 @@ git clone https://gitea.osmocom.org/sim-card/pysim.git
 cd pysim
 ```
 
-Take a photo of the SIM card and insert it at the SIM card reader 
+Take a photo of the SIM card
+
+Insert it at the SIM card reader (gold side of chip must be close to HID logo)
 
 (Optional) Read a few details of the SIM card
 
