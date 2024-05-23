@@ -22,6 +22,7 @@ Clone the following repository from Symcom:
 
 ```
 git clone https://gitea.osmocom.org/sim-card/pysim.git
+cd pysim
 ```
 
 Take a photo of the SIM card and insert it at the SIM card reader 
