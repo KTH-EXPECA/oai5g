@@ -58,9 +58,9 @@ For our particular setup, the format of the command to program the SIM card is:
 
 Log the command and the old IMSI and the new IMSI for bookkeeping purposes
 
-Add new IMSI at ```oai-cn5g/database/oai_db.sql``` file in the two tables and adjust the static IP address
+Add new IMSI to ```oai-cn5g/database/oai_db.sql``` file in the two tables and adjust the static IP address
 
-Add a new entry at ```oai-cn5g/conf/users.conf``` file
+Add a new entry to ```oai-cn5g/conf/users.conf``` file
 
 Insert SIM card into Quectel module
 
@@ -111,25 +111,25 @@ or the AT command
 ```
 at+cfun=1
 ```
-You should see the connection happening and then run the following to check the connection and ip address:
+You should see the connection happening and then run the following to check the connection and ip ress:
 ```
 sudo python3 quectel_get_ip.py
 ```
-On the host though you will see a different ip address, e.g.
+On the host though you will see a different ip ress, e.g.
 ```
 192.168.225.37/24
 ```
-In this case the quectel IP address will be
+In this case the quectel IP ress will be
 ```
 192.168.225.1
 ```
 
-## 7) Add the routing command to reach ext-dn
+## 7)  the routing command to reach ext-dn
 
 For the first time and whenever rebooting:
 
 ```
-sudo ip route add 192.168.70.128/26 via 192.168.225.1
+sudo ip route  192.168.70.128/26 via 192.168.225.1
 ```
 Now you should be able to ping the ext-dn at `192.168.70.135` from the UE host.
 
