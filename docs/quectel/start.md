@@ -58,19 +58,24 @@ For our particular setup, the format of the command to program the SIM card is:
 
 Log the command and the old IMSI and the new IMSI for bookkeeping purposes
 
-Add new IMSI at "oai_db.sql" file in the two tables and adjust the static IP address
+Add new IMSI at *oai-cn5g/oai_db.sql* file in the two tables and adjust the static IP address
 
-Insert SIM card in Quectel module
+Add a new entry at *oai-cn5g/users.conf* file
+
+Insert SIM card into Quectel module
 
 ## 4) Configure Quectel module
 
-At the Ubuntu PC where the module is set the PDP context:
+At the Ubuntu PC where the module is connected, set the PDP context:
 
 ```
+cd ~/quectel
 sudo python3 set_conf.py 
 ```
 
-The above command needs to be issued regularly, especially whenever a SIM card is inserted
+The above command executes  *AT+CGDCONT=1,"IP","oai"* via the *set_conf.py* python script
+
+The above command must be issued whenever a SIM card is inserted into the Quectel module
 
 Next, we need to configure the quectel module via AT commands. For this purpose there are python scripts next to this markdown file.
 You can check all the AT commands (here)[https://files.waveshare.com/upload/7/78/Quectel_RG50xQ_RM5xxQ_Series_AT_Commands_Manual_V1.2.pdf].
