@@ -117,7 +117,7 @@ docker exec -it oai-ext-dn iperf3 -s
 iperf3 -c -R 192.168.70.135 -t 20
 ```
 
-(UPLINK) Send traffic from UE to OAICN5G at the oai-ext-dn network function for 20 seconds:
+(UPLINK) Send traffic from UE to the oai-ext-dn network function for 20 seconds:
 
 ```
 iperf3 -c 192.168.70.135 -t 20
