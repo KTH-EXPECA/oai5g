@@ -45,6 +45,7 @@ Run the command as:
 ```
 ./pySim-prog.py -p 0 -t sysmoISIM-SJA5 -a XXXXXXXX -x 001 -y 01 -i 001010000000001 -s 8988211000001139297 -n OpenAirInterface -k fec86ba6eb707ed08905757b1bb44b8f -o C42449363BBAD02B66D16BC975D77CC1 --acc 0001
 ```
+where XXXXXXXX must is the ADM1 of the SIM card which is found in the email sent by the SIM card seller.
 
 ## 3) Configure Quectel module
 
