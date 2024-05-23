@@ -30,22 +30,23 @@ Take a photo of the SIM card and insert it at the SIM card reader
 ./pySim-read.py -p0
 ```
 
-You can look at the entries in openairinterface sql database: https://gitlab.eurecom.fr/oai/openairinterface5g/-/blob/develop/doc/tutorial_resources/oai-cn5g/database/oai_db.sql?ref_type=heads
-to get KI and OPC.
-
 An example command to program the SIM card is as follows:
+
 ```
 ./pySim-prog.py -p 0 -t sysmoISIM-SJA5 -a 85017255 -x 001 -y 01 -i 001010000000001 -s 8988211000001139297 -n OpenAirInterface -k fec86ba6eb707ed08905757b1bb44b8f -o C42449363BBAD02B66D16BC975D77CC1 --acc 0001
 ```
 - The argument of `-a` is the ADM value of the SIM card (found in the invoice of the SIM card)
 - The argument of `-x` sets the MCC and of `-y` sets the MCN (must match the OAI setup, same for all SIM cards)
 - The argument of `n` sets the targt provider's name (same for all simcards)
-- The argument of `-i` sets the IMSI of the SIM card (depends on MCC and MCN, must match the entries in CN database in "oai-cn5g/database/oai_db.sql", should vary)
-- The argument of `-k` sets the KI of `-o` sets the OPC of the SIM card (must match the entries in CN database in "oai-cn5g/database/oai_db.sql", same for all SIM cards)
+- The argument of `-i` sets the IMSI of the SIM card (depends on MCC and MCN, matches the entries in "oai-cn5g/database/oai_db.sql", should vary)
+- The argument of `-k` sets the KI of `-o` sets the OPC of the SIM card (matches the entries in "oai-cn5g/database/oai_db.sql", same for all SIM cards)
 - The argument of `-s` sets the ICCID of the SIM card (we set to its original value found in the invoice)
 - The argument of `-acc` sets the ACC (we set it as in [NR_SA_Tutorial_COTS_UE](https://gitlab.eurecom.fr/oai/openairinterface5g/-/blob/develop/doc/NR_SA_Tutorial_COTS_UE.md), same for all SIM cards)
 
-More info can also be found here: https://osmocom.org/projects/pysim/wiki/PySim-prog
+More info regarding the arguments of the previous command can be found in [PySim-prog](https://osmocom.org/projects/pysim/wiki/PySim-prog)
+
+An example file of the authentication database is in [oai_db.sql](https://gitlab.eurecom.fr/oai/openairinterface5g/-/blob/develop/doc/tutorial_resources/oai-cn5g/database/oai_db.sql?ref_type=heads)
+
 
 ## 3) Configure Quectel module
 
