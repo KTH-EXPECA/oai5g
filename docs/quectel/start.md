@@ -47,6 +47,11 @@ More info regarding the arguments of the previous command can be found in [PySim
 
 An example file of the authentication database is in [oai_db.sql](https://gitlab.eurecom.fr/oai/openairinterface5g/-/blob/develop/doc/tutorial_resources/oai-cn5g/database/oai_db.sql?ref_type=heads)
 
+For our particular setup, the format of the command to program the SIM card is:
+
+```
+./pySim-prog.py -p 0 -t sysmoISIM-SJA5 -a *ADM* -s *ICCID* -i 0010100000000*xx* -x 001 -y 01 -n OpenAirInterface -k fec86ba6eb707ed08905757b1bb44b8f -o C42449363BBAD02B66D16BC975D77CC1 --acc 0001
+```
 
 ## 3) Configure Quectel module
 
