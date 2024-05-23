@@ -37,13 +37,13 @@ An example command to program the SIM card is as follows:
 ```
 ./pySim-prog.py -p 0 -t sysmoISIM-SJA5 -a 85017255 -x 001 -y 01 -i 001010000000001 -s 8988211000001139297 -n OpenAirInterface -k fec86ba6eb707ed08905757b1bb44b8f -o C42449363BBAD02B66D16BC975D77CC1 --acc 0001
 ```
-- The argument of `-a` Read the ADM value from the invoice for each simcard, insert it after `-a`.
-- Insert MCC after `-x` e.g. `001` and MNC after `-y` e.g. `01`, same for all simcards.
-- Insert the Operator name after `-n` e.g. `OpenAirInterface`, same for all simcards.
-- Insert IMSI after `-i` e.g. `001010000000001`, you have to increase the number for each sim e.g. `001010000000002` and `001010000000003`.
-- Insert KI after `-k` and OPC `-o`, they should be the same for all simcards.
-- Insert ICCID after `-s` by reading it for each simcard from the invoice.
-- Insert Access control code (ACC) after `--acc` (not required but so far we followed openairinterface)
+- The argument of `-a` is the ADM value of the SIM card (found in the invoice of the SIM card)
+- The argument of `-x` sets the MCC and of `-y` sets the MCN (must match the OAI setup, same for all SIM cards)
+- The argument of `n` sets the targt provider's name (same for all simcards)
+- The argument of `-i` sets the IMSI of the SIM card (depends on MCC and MCN, must match the entries in CN database in "oai-cn5g/database/oai_db.sql", should vary)
+- The argument of `-k` sets the KI of `-o` sets the OPC of the SIM card (must match the entries in CN database in "oai-cn5g/database/oai_db.sql", same for all SIM cards)
+- The argument of `-s` sets the ICCID of the SIM card (we set to its original value found in the invoice)
+- The argument of `-acc` sets the ACC (we set it as in [NR_SA_Tutorial_COTS_UE](https://gitlab.eurecom.fr/oai/openairinterface5g/-/blob/develop/doc/NR_SA_Tutorial_COTS_UE.md), same for all SIM cards)
 
 More info can also be found here: https://osmocom.org/projects/pysim/wiki/PySim-prog
 
