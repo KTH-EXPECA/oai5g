@@ -8,15 +8,16 @@ We connect it via USB3 to an Ubuntu 20.04 system.
 
 Follow the instructions in [NR_SA_Tutorial_OAI_5CN5G](https://gitlab.eurecom.fr/oai/openairinterface5g/-/blob/develop/doc/NR_SA_Tutorial_OAI_CN5G.md).
 
-Follow the instructions of sections 3.1 & 3.2 & 4.1 & 4.2 in [NR_SA_Tutorial_COTS_UE](https://gitlab.eurecom.fr/oai/openairinterface5g/-/blob/develop/doc/NR_SA_Tutorial_COTS_UE.md)
+Follow the instructions in sections 3.1 and 3.2 and 4.1 and 4.2 in [NR_SA_Tutorial_COTS_UE](https://gitlab.eurecom.fr/oai/openairinterface5g/-/blob/develop/doc/NR_SA_Tutorial_COTS_UE.md)
 
-In Section 3.1, use "git checkout v4.3.0.0" instead of "git checkout v4.6.0.0"
+In section 3.1, use "git checkout v4.3.0.0" instead of "git checkout v4.6.0.0"
 
 ## 2) Write Symcom Sim Cards
 
 The simacards we have are: https://osmocom.org/projects/cellular-infrastructure/wiki/SysmoISIM-SJA5
 
-Clone the following repo from Symcom
+Clone the following repository from Symcom:
+
 ```
 git clone https://gitea.osmocom.org/sim-card/pysim.git
 ```
@@ -27,21 +28,16 @@ Take a photo of the SIM card and insert it at the SIM card reader
 
 ```
 ./pySim-read.py -p0
-
 ```
 
 You can look at the entries in openairinterface sql database: https://gitlab.eurecom.fr/oai/openairinterface5g/-/blob/develop/doc/tutorial_resources/oai-cn5g/database/oai_db.sql?ref_type=heads
 to get KI and OPC.
 
-Run the command as:
+An example command to program the SIM card is as follows:
 ```
-./pySim-prog.py -p 0 -t sysmoISIM-SJA5 -a XXXXXXXX -x 001 -y 01 -i 001010000000001 -s 8988211000001139297 -n OpenAirInterface -k fec86ba6eb707ed08905757b1bb44b8f -o C42449363BBAD02B66D16BC975D77CC1 --acc 0001
+./pySim-prog.py -p 0 -t sysmoISIM-SJA5 -a 85017255 -x 001 -y 01 -i 001010000000001 -s 8988211000001139297 -n OpenAirInterface -k fec86ba6eb707ed08905757b1bb44b8f -o C42449363BBAD02B66D16BC975D77CC1 --acc 0001
 ```
-where XXXXXXXX must is the ADM1 of the SIM card which is found in the email sent by the SIM card seller
-
-The descriptions for the possible arguments of the previous command can be found below:
-
-- Read the ADM value from the invoice for each simcard, insert it after `-a`.
+- The argument of `-a` Read the ADM value from the invoice for each simcard, insert it after `-a`.
 - Insert MCC after `-x` e.g. `001` and MNC after `-y` e.g. `01`, same for all simcards.
 - Insert the Operator name after `-n` e.g. `OpenAirInterface`, same for all simcards.
 - Insert IMSI after `-i` e.g. `001010000000001`, you have to increase the number for each sim e.g. `001010000000002` and `001010000000003`.
