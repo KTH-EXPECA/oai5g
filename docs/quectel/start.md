@@ -42,8 +42,8 @@ An example command to program the SIM card is as follows:
 - The argument of `-i` sets the IMSI of the SIM card (matches the entries in "oai-cn5g/database/oai_db.sql", should vary)
 - The argument of `-s` sets the ICCID of the SIM card (we set to its original value found in the invoice)
 - The argument of `n` sets the targt provider's name (same for all simcards)
-- The argument of `-k` sets the KI of the SIM card (matches the entries in "oai-cn5g/database/oai_db.sql", same for all SIM cards)
-- The argument of `-o` sets the OPC of the SIM card (matches the entries in "oai-cn5g/database/oai_db.sql", same for all SIM cards)
+- The argument of `-k` sets the KI of the SIM card (matches the entries in ```oai-cn5g/database/oai_db.sql```, same for all SIM cards)
+- The argument of `-o` sets the OPC of the SIM card (matches the entries in ```oai-cn5g/database/oai_db.sql```, same for all SIM cards)
 - The argument of `-acc` sets the ACC (we set it as in [NR_SA_Tutorial_COTS_UE](https://gitlab.eurecom.fr/oai/openairinterface5g/-/blob/develop/doc/NR_SA_Tutorial_COTS_UE.md), same for all SIM cards)
 
 More info regarding the arguments of the previous command can be found in [PySim-prog](https://osmocom.org/projects/pysim/wiki/PySim-prog)
@@ -58,9 +58,9 @@ For our particular setup, the format of the command to program the SIM card is:
 
 Log the command and the old IMSI and the new IMSI for bookkeeping purposes
 
-Add new IMSI at *oai-cn5g/database/oai_db.sql* file in the two tables and adjust the static IP address
+Add new IMSI at ```oai-cn5g/database/oai_db.sql``` file in the two tables and adjust the static IP address
 
-Add a new entry at *oai-cn5g/conf/users.conf* file
+Add a new entry at ```oai-cn5g/conf/users.conf``` file
 
 Insert SIM card into Quectel module
 
