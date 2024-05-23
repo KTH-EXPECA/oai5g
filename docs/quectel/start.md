@@ -73,7 +73,7 @@ cd ~/quectel
 sudo python3 set_conf.py 
 ```
 
-The above command executes  *AT+CGDCONT=1,"IP","oai"* via the *set_conf.py* python script
+The above command executes  ```AT+CGDCONT=1,"IP","oai"``` via the ```set_conf.py``` python script
 
 The above command must be issued whenever a SIM card is inserted into the Quectel module
 
