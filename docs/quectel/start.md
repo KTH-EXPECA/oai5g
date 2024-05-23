@@ -4,18 +4,13 @@ We use the Waveshare 5G quectel module: https://www.waveshare.com/wiki/RM500Q-GL
 
 We connect it via USB3 to an Ubuntu 20.04 system.
 
-First we start by writing a simcard for Openairinterface 5G.
+## 1) Set up OAI CN5G and OAI gNB at the same Ubuntu PC
 
-## 1) Set up OAI CN5G and OAI gNB
+Follow the instructions in [NR_SA_Tutorial_OAI_5CN5G](https://gitlab.eurecom.fr/oai/openairinterface5g/-/blob/develop/doc/NR_SA_Tutorial_OAI_CN5G.md).
 
-We run them on the same Ubuntu PC.
+Follow the instructions of sections 3.1 & 3.2 & 4.1 & 4.2 in [NR_SA_Tutorial_COTS_UE](https://gitlab.eurecom.fr/oai/openairinterface5g/-/blob/develop/doc/NR_SA_Tutorial_COTS_UE.md)
 
-First, follow the instructions in [NR_SA_Tutorial_OAI_5CN5G](https://gitlab.eurecom.fr/oai/openairinterface5g/-/blob/develop/doc/NR_SA_Tutorial_OAI_CN5G.md).
-
-
-Second, follow the instructions *only* of sections 3.1 & 3.2 & 4.1 & 4.2 in [NR_SA_Tutorial_COTS_UE](https://gitlab.eurecom.fr/oai/openairinterface5g/-/blob/develop/doc/NR_SA_Tutorial_COTS_UE.md)
-
-*Note*: In Section 3.1, do not use git checkout v4.6.0.0, instead use "git checkout v4.3.0.0"
+In Section 3.1, use "git checkout v4.3.0.0" instead of "git checkout v4.6.0.0"
 
 ## 2) Write Symcom Sim Cards
 
