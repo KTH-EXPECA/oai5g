@@ -12,7 +12,7 @@ Follow the instructions in sections 3.1 and 3.2 and 4.1 and 4.2 in [NR_SA_Tutori
 
 In section 3.1, use "git checkout v4.3.0.0" instead of "git checkout v4.6.0.0"
 
-## 2) Write Symcom Sim Cards
+## 2) Program Symcom SIM cards
 
 The simacards we have are: https://osmocom.org/projects/cellular-infrastructure/wiki/SysmoISIM-SJA5
 
