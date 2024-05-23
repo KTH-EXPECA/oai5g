@@ -98,6 +98,9 @@ In this case the quectel IP address will be
 ```
 
 ## 7) Add the routing command to reach ext-dn
+
+For the first time and whenever rebooting:
+
 ```
 sudo ip route add 192.168.70.128/26 via 192.168.225.1
 ```
