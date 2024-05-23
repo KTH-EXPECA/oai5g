@@ -26,7 +26,20 @@ Clone the following repo from Symcom
 git clone https://gitea.osmocom.org/sim-card/pysim.git
 ```
 
-Insert the simcard first, the card reader blinks, and
+First, insert the SIM card at the SIM card reader 
+
+
+
+You can look at the entries in openairinterface sql database: https://gitlab.eurecom.fr/oai/openairinterface5g/-/blob/develop/doc/tutorial_resources/oai-cn5g/database/oai_db.sql?ref_type=heads
+to get KI and OPC.
+
+Run the command as:
+```
+./pySim-prog.py -p 0 -t sysmoISIM-SJA5 -a XXXXXXXX -x 001 -y 01 -i 001010000000001 -s 8988211000001139297 -n OpenAirInterface -k fec86ba6eb707ed08905757b1bb44b8f -o C42449363BBAD02B66D16BC975D77CC1 --acc 0001
+```
+where XXXXXXXX must is the ADM1 of the SIM card which is found in the email sent by the SIM card seller
+
+The descriptions for the possible arguments of the previous command can be found below:
 
 - Read the ADM value from the invoice for each simcard, insert it after `-a`.
 - Insert MCC after `-x` e.g. `001` and MNC after `-y` e.g. `01`, same for all simcards.
@@ -36,16 +49,7 @@ Insert the simcard first, the card reader blinks, and
 - Insert ICCID after `-s` by reading it for each simcard from the invoice.
 - Insert Access control code (ACC) after `--acc` (not required but so far we followed openairinterface)
 
-More info find here: https://osmocom.org/projects/pysim/wiki/PySim-prog
-
-You can look at the entries in openairinterface sql database: https://gitlab.eurecom.fr/oai/openairinterface5g/-/blob/develop/doc/tutorial_resources/oai-cn5g/database/oai_db.sql?ref_type=heads
-to get KI and OPC.
-
-Run the command as:
-```
-./pySim-prog.py -p 0 -t sysmoISIM-SJA5 -a XXXXXXXX -x 001 -y 01 -i 001010000000001 -s 8988211000001139297 -n OpenAirInterface -k fec86ba6eb707ed08905757b1bb44b8f -o C42449363BBAD02B66D16BC975D77CC1 --acc 0001
-```
-where XXXXXXXX must is the ADM1 of the SIM card which is found in the email sent by the SIM card seller.
+More info can also be found here: https://osmocom.org/projects/pysim/wiki/PySim-prog
 
 ## 3) Configure Quectel module
 
