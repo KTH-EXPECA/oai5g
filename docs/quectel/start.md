@@ -26,9 +26,7 @@ Clone the following repo from Symcom
 git clone https://gitea.osmocom.org/sim-card/pysim.git
 ```
 
-First, insert the SIM card at the SIM card reader 
-
-
+Insert the SIM card at the SIM card reader 
 
 You can look at the entries in openairinterface sql database: https://gitlab.eurecom.fr/oai/openairinterface5g/-/blob/develop/doc/tutorial_resources/oai-cn5g/database/oai_db.sql?ref_type=heads
 to get KI and OPC.
