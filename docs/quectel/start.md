@@ -4,7 +4,7 @@ We use the Quectel RM502Q-AE 5G module found in [waveshare](https://www.waveshar
 
 We connect it via USB3 to an Ubuntu 20.04 system
 
-We use the sysmocom SIM cards found in [osmocom](https://osmocom.org/projects/cellular-infrastructure/wiki/SysmoISIM-SJA5)
+We use the green sysmocom SIM cards found in [osmocom](https://osmocom.org/projects/cellular-infrastructure/wiki/SysmoISIM-SJA5)
 
 ## 1) Set up OAI CN5G and OAI gNB at the same Ubuntu PC
 
