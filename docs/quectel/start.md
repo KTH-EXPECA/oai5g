@@ -103,4 +103,22 @@ sudo ip route add 192.168.70.128/26 via 192.168.225.1
 ```
 Now you should be able to ping the ext-dn at `192.168.70.135` from the UE host.
 
+## 8) Check downlink and uplink bitrate for UE host
 
+Create an iperf3 server at the Ubuntu PC where the OAICN5G is hosted:
+
+```
+docker exec -it oai-ext-dn iperf3 -s
+```
+
+(DOWLINK) Make the oai-ext-dn network function send traffic to UE:
+
+```
+iperf3 -c -R 192.168.70.135 -t 20
+```
+
+(UPLINK) Send traffic from UE to OAICN5G at the oai-ext-dn network function for 20s:
+
+```
+iperf3 -c 192.168.70.135 -t 20
+```
