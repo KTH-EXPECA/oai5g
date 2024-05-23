@@ -38,7 +38,7 @@ An example command to program the SIM card is as follows:
 - The argument of `-a` is the ADM value of the SIM card (found in the invoice of the SIM card)
 - The argument of `-x` sets the MCC and of `-y` sets the MCN (must match the OAI setup, same for all SIM cards)
 - The argument of `n` sets the targt provider's name (same for all simcards)
-- The argument of `-i` sets the IMSI of the SIM card (depends on MCC and MCN, matches the entries in "oai-cn5g/database/oai_db.sql", should vary)
+- The argument of `-i` sets the IMSI of the SIM card (matches the entries in "oai-cn5g/database/oai_db.sql", should vary)
 - The argument of `-k` sets the KI of `-o` sets the OPC of the SIM card (matches the entries in "oai-cn5g/database/oai_db.sql", same for all SIM cards)
 - The argument of `-s` sets the ICCID of the SIM card (we set to its original value found in the invoice)
 - The argument of `-acc` sets the ACC (we set it as in [NR_SA_Tutorial_COTS_UE](https://gitlab.eurecom.fr/oai/openairinterface5g/-/blob/develop/doc/NR_SA_Tutorial_COTS_UE.md), same for all SIM cards)
