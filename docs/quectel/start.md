@@ -14,7 +14,28 @@ Follow the instructions in sections 3.1 and 3.2 and 4.1 and 4.2 in [NR_SA_Tutori
 
 In section 3.1, use ```git checkout v4.3.0.0``` instead of ```git checkout v4.6.0.0```
 
-## 2) Bring Up the 5G network
+## 2) Bring up the 5G network
+
+At the Ubuntu PC that hosts both the OAI CN5G and OAI gNB, go to the ```oai-cn5g directory. In our case:
+
+```
+cd /home/wlab/COTS_UE_GUIDE/oai-cn5g
+```
+
+Start the OAI CN5G:
+
+```
+docker compose up -d
+```
+
+The OAI CN5G is stopped by issuing ```docker compose up -d
+
+At the same PC, go to the directory that contains the ```nr-softmodem file. In our case:
+
+```
+cd /home/wlab/COTS_UE_GUIDE/custom-openairinterface5g/cmake_targets/ran_build/build
+```
+
 
 ## 3) Program the sysmocom SIM cards
 
