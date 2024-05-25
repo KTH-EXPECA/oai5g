@@ -36,6 +36,11 @@ At the same PC, go to the directory that contains the ```nr-softmodem file. In o
 cd /home/wlab/COTS_UE_GUIDE/custom-openairinterface5g/cmake_targets/ran_build/build
 ```
 
+Start the OAI gNB:
+
+```
+sudo ./nr-softmodem -O ../../../targets/PROJECTS/GENERIC-NR-5GC/CONF/gnb.sa.band78.fr1.106PRB.usrpb210.conf --sa -E --continuous-tx
+```
 
 ## 3) Program the sysmocom SIM cards
 
