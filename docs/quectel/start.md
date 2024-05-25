@@ -61,9 +61,9 @@ For our particular setup, the format of the command to program the SIM card is:
 
 Log the issued command, the old IMSI and the new IMSI for bookkeeping purposes
 
-Add new IMSI to ```oai-cn5g/database/oai_db.sql``` file in the two tables and adjust the static IP address
+Add new IMSI to the two tables in the ```oai-cn5g/database/oai_db.sql``` file and adjust the static IP address
 
-Add a new entry to ```oai-cn5g/conf/users.conf``` file
+Add a new entry to  the ```oai-cn5g/conf/users.conf``` file
 
 Insert SIM card into Quectel module
 
