@@ -158,7 +158,7 @@ In this case the quectel IP ress will be
 For the first time and whenever rebooting:
 
 ```
-sudo ip route  192.168.70.128/26 via 192.168.225.1
+sudo ip route add 192.168.70.128/26 via 192.168.225.1
 ```
 Now you should be able to ping the ext-dn at `192.168.70.135` from the UE host.
 
