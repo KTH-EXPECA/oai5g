@@ -155,11 +155,14 @@ Possible fixes: re-run "set_conf.py", reboot Quectel module, reboot gNB, reboot 
 
 ## 6)  Reach the ext-dn of the CN 5G to run ping and iperf tests
 
-For the first time and whenever rebooting:
+At the Ubuntu PC where the module is connected, issue the following command:
 
 ```
 sudo ip route add 192.168.70.128/26 via 192.168.225.1
 ```
+
+The above command needs to be re-issued whenever the Ubuntu PC is rebooted
+
 Now you should be able to ping the ext-dn at "192.168.70.135" from the Ubuntu PC where the Quectel module is connected:
 
 ```
