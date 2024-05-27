@@ -1,4 +1,4 @@
-# How to Setup Quectel to connect to Openairinterface5G
+# How to connect a Quectel module to the OAI 5G network
 
 We use the [RM500Q-GL 5G HAT COTS UE](https://www.waveshare.com/wiki/RM500Q-GL_5G_HAT) as our COTS UE which uses the [Quectel RM502Q-AE 5G module](https://www.quectel.com/product/5g-rm50xq-series/)
 
