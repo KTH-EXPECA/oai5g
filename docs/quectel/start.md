@@ -95,76 +95,78 @@ Insert SIM card into Quectel module
 
 ## 4) Configure Quectel module
 
-At the Ubuntu PC where the module is connected, set the PDP context:
+We need to configure the quectel module via (AT commands)[https://files.waveshare.com/upload/7/78/Quectel_RG50xQ_RM5xxQ_Series_AT_Commands_Manual_V1.2.pdf].
+
+We issue the AT commands via (python scripts)[https://github.com/KTH-EXPECA/openairinterface5g-docs/tree/main/docs/quectel].
+
+At the Ubuntu PC where the module is connected, turn the module into ECM mode:
+```
+sudo python3 makeECM.py
+```
+The above command issues ```at+qcfg="usbnet",1``` via the python script
+
+Unplug the USB cable, replug it and check the IP interfaces:
+
+```
+ip a
+```
+
+A new interface with a name starting with "ex" should appear with an IP address of the form "192.168.225.xx"
+
+In that case, the Quectel IP address on the USB interface is  "192.168.225.1"
+
+The above setup allows the exchange of IP traffic between the Quectel module and the Ubuntu PC via the USB cable
+
+Set the PDP context to enable data exchange via the 5G network:
 
 ```
 cd ~/quectel
 sudo python3 set_conf.py 
 ```
 
-The above command executes  ```AT+CGDCONT=1,"IP","oai"``` via the ```set_conf.py``` python script
+The above command issues  ```at+cgdcont=1,"IP","oai"``` via the python script
 
 The above command must be issued whenever a SIM card is inserted into the Quectel module
 
-Next, we need to configure the quectel module via AT commands. For this purpose there are python scripts next to this markdown file.
-You can check all the AT commands (here)[https://files.waveshare.com/upload/7/78/Quectel_RG50xQ_RM5xxQ_Series_AT_Commands_Manual_V1.2.pdf].
+Reboot the radio module:
 
-We turn the module into ECM mode first by:
-```
-sudo python3 quectel_makeECM.py
-```
-or the AT command
-```
-at+qcfg="usbnet",1
-```
-Then, unplug the USB cable and replug it. The ECM driver kicks in and you should see a new interface e.g. `ex...`.
-
-## 5) Turn off the module
-
-Turn off the radio module by running:
 ```
 sudo python3 quectel_off.py
-```
-or the AT command
-```
-at+cfun=0
-```
-
-## 6) Turn on the module
-
-Turn on the radio module by running:
-```
 sudo python3 quectel_on.py
 ```
-or the AT command
+
+The above commands issue ```at+cfun=0``` and ```at+cfun=1``` respectively
+
+Check the 5G connection to see if the Quectel module gets an IP address for communication with the gNB:
+
 ```
-at+cfun=1
-```
-You should see the connection happening and then run the following to check the connection and ip ress:
-```
-sudo python3 quectel_get_ip.py
-```
-On the host though you will see a different ip ress, e.g.
-```
-192.168.225.37/24
-```
-In this case the quectel IP ress will be
-```
-192.168.225.1
+sudo python3 get_ip.py
 ```
 
-## 7)  the routing command to reach ext-dn
+Typically this 5G IP should be of the form "10.0.0.x"
+
+At this point, the text "LCID 4" should be printed at the terminal in the Ubuntu PC where the gNB is launched
+
+Text "LCID 4" stands for the logical channel ID 4 in 5G which is the dedicated traffic channel that carries data between the UE and the gNB  
+
+If text "LCID 4" is not printed, then no data can be sent between the UE and the gNB
+
+Possible fixes: re-run "set_conf.py", reboot Quectel module, reboot gNB, reboot CN5G 
+
+## 6)  Reach the ext-dn of the CN 5G to run ping and iperf tests
 
 For the first time and whenever rebooting:
 
 ```
 sudo ip route add 192.168.70.128/26 via 192.168.225.1
 ```
-Now you should be able to ping the ext-dn at `192.168.70.135` from the UE host.
+Now you should be able to ping the ext-dn at "192.168.70.135" from the Ubuntu PC where the Quectel module is connected:
 
-## 8) Check downlink and uplink bitrate for UE host
+```
+ping 192.168.70.135
+```
 
-Create an iperf3 server at the Ubuntu PC where the OAICN5G is hosted:
+Create an iperf3 server at the Ubuntu PC where the OAI-CN5G is hosted:
 
 ```
 docker exec -it oai-ext-dn iperf3 -s
@@ -181,3 +183,5 @@ iperf3 -c  192.168.70.135 -R -t 20
 ```
 iperf3 -c 192.168.70.135 -t 20
 ```
+
+The downlink bitrate should be around 80 Mbps and the uplink bitrate should be around 15 Mbps
