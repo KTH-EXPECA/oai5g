@@ -279,5 +279,5 @@ Run the OpenRTiST client to connect to the OpenRTiST server via the 5G network:
 - The argument of `-v` selects the video file
 - The argument of `-c` sets the OpenRTiST server IP address and port (it is of the form "demo-oai IP address":9099)
 - The argument of `-o` creates a file that logs performance metrics such as frame roundtrip delay 
-- The argument of `--quiet` selects the display mode (if True then display is off)
+- The argument of `--quiet` selects the display mode (if "True" then display is off)
 - The argument of `-u` sets the playback duration (loops the video file if duration exceeds duration of video file)
