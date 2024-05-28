@@ -6,7 +6,7 @@ We connect it via USB3 to an Ubuntu 20.04 system
 
 We program the [blue sysmocom SIM cards](https://osmocom.org/projects/cellular-infrastructure/wiki/SysmoISIM-SJA5) to register it to our OAI 5G SA network
 
-## 1) Set up OAI CN5G and OAI gNB at the same Ubuntu PC
+## 1) Set up OAI 5G CN and OAI gNB at the same Ubuntu PC
 
 Follow the instructions in [NR_SA_Tutorial_OAI_5CN5G](https://gitlab.eurecom.fr/oai/openairinterface5g/-/blob/develop/doc/NR_SA_Tutorial_OAI_CN5G.md)
 
@@ -153,7 +153,7 @@ If text "LCID 4" is not printed, then no data can be sent between the UE and the
 
 Possible fixes: re-run "set_conf.py", reboot Quectel module, reboot gNB, reboot CN5G 
 
-## 6)  Reach the ext-dn of the CN 5G to run ping and iperf tests
+## 6)  Reach the ext-dn of the 5G CN to run ping and iperf tests
 
 At the Ubuntu PC where the module is connected, issue the following command:
 
@@ -188,3 +188,96 @@ iperf3 -c 192.168.70.135 -t 20
 ```
 
 The downlink bitrate should be around 80 Mbps and the uplink bitrate should be around 15 Mbps
+
+## 7) Run OpenRTiST on the 5G netwowrk
+
+
+# 7a) Set up the OpenRTiST server
+
+The OpenRTiST server is hosted by the Ubuntu PC that hosts the 5G gNB and CN
+
+Download the OpenRTiST repository:
+
+```
+git clone https://github.com/cmusatyalab/openrtist.git
+cd openrtist/server
+```
+
+Create a Python3.7 virtual enviroment and activate it:
+
+```
+python3.7 -m venv venv
+source venv/bin/activate
+```
+
+Install OpenRTiST server dependencies:
+
+```
+pip install -r requirements.txt
+```
+
+Run the server with --timing argument to see performance on terminal:
+
+```
+python main.py --timing
+```
+
+Open a new terminal and check the ip address of the demo-oai interface:
+
+```
+ip a
+```
+
+In our case, it is "192.168.70.129", we use this IP address later on
+
+
+# 7b) Set up the OpenRTiST server
+
+The OpenRTiST client is hosted by the Ubuntu PC where the Quectel module is connected
+
+Download the customized OpenRTiST repository that uses a video file and timestamps frames:
+
+```
+git clone https://github.com/samiemostafavi/openrtist.git
+cd openrtist/python-client
+```
+
+Create a Python3.8 virtual enviroment and activate it:
+
+```
+python3.8 -m venv venv
+source venv/bin/activate
+```
+
+Install "poetry" and then use it to install the OpenRTiST client dependencies:
+
+```
+pip install poetry
+poetry install
+```
+
+Set the "QT_QPA_PLATFORM" variable to offscreen to avoid display errors:
+
+```
+export QT_QPA_PLATFORM=offscreen
+```
+
+Add a route to the "demo-oai" interface of the Ubuntu PC that hosts the OpenRTiST server:
+
+```
+sudo ip route add 192.168.70.129/32 via 192.168.225.1
+```
+
+The above command uses "192.168.70.129" since that is the IP address of the "demo-oai" interface in our case
+
+Run the OpenRTiST client to connect to the OpenRTiST server via the 5G network:
+
+```
+./src/openrtist/sinfonia_wrapper.py -v ./Big_Buck_Bunny_1080_10s_5MB.mp4 -c 192.168.70.129:9099 -o ./res.json --quiet True -u 100
+```
+
+- The argument of `-v` selects the video file
+- The argument of `-c` sets the OpenRTiST server IP address and port (it is of the form "demo-oai IP address":9099)
+- The argument of `-o` creates a file that logs performance metrics such as frame roundtrip delay 
+- The argument of `--quiet` selects the display mode (if True then display is off)
+- The argument of `-u` sets the playback duration (loops the video file if duration exceeds duration of video file)
