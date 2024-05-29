@@ -133,8 +133,8 @@ If the IP didnt show up, probably needs to be set manually via netplan:
 ```
     enp0s20f0u1i4:
       dhcp4: no
-      addresses: [192.168.255.37/24]
-      gateway4: 192.168.255.1
+      addresses: [192.168.225.37/24]
+      gateway4: 192.168.225.1
 ```
 
 In that case, the Quectel IP address on the USB interface is  "192.168.225.1"
