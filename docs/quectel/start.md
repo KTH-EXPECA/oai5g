@@ -147,8 +147,8 @@ The above command must be issued whenever a SIM card is inserted into the Quecte
 Reboot the radio module:
 
 ```
-sudo python3 quectel_off.py
-sudo python3 quectel_on.py
+sudo ./venv/bin/python off.py 
+sudo ./venv/bin/python on.py 
 ```
 
 The above commands issue ```at+cfun=0``` and ```at+cfun=1``` respectively
