@@ -134,7 +134,6 @@ If the IP didnt show up, probably needs to be set manually via netplan:
     enp0s20f0u1i4:
       dhcp4: no
       addresses: [192.168.225.37/24]
-      gateway4: 192.168.225.1
 ```
 
 In that case, the Quectel IP address on the USB interface is  "192.168.225.1"
@@ -224,13 +223,15 @@ Download the OpenRTiST repository:
 
 ```
 git clone https://github.com/cmusatyalab/openrtist.git
-cd openrtist/server
+cd openrtist
+git checkout timestamping
+cd server
 ```
 
 Create a Python3.7 virtual enviroment and activate it:
 
 ```
-python3.7 -m venv venv
+python3 -m virtualenv --python=3.7 venv
 source venv/bin/activate
 ```
 
@@ -263,13 +264,15 @@ Download the customized OpenRTiST repository that uses a video file and timestam
 
 ```
 git clone https://github.com/samiemostafavi/openrtist.git
-cd openrtist/python-client
+cd openrtist
+git checkout timestamping
+cd python-client
 ```
 
 Create a Python3.8 virtual enviroment and activate it:
 
 ```
-python3.8 -m venv venv
+python3 -m virtualenv --python=3.8 venv
 source venv/bin/activate
 ```
 
