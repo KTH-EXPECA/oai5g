@@ -129,6 +129,14 @@ ip a
 
 A new interface with a name starting with "ex" should appear with an IP address of the form "192.168.225.xx"
 
+If the IP didnt show up, probably needs to be set manually via netplan:
+```
+    enp0s20f0u1i4:
+      dhcp4: no
+      addresses: [192.168.255.37/24]
+      gateway4: 192.168.255.1
+```
+
 In that case, the Quectel IP address on the USB interface is  "192.168.225.1"
 
 The above setup allows the exchange of IP traffic between the Quectel module and the Ubuntu PC via the USB cable
