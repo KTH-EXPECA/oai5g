@@ -111,11 +111,13 @@ Create a Python virtual enviroment and activate it:
 ```
 python -m venv venv
 source venv/bin/activate
+pip install pyserial
 ```
 
 At the Ubuntu PC where the module is connected, turn the module into ECM mode:
+
 ```
-sudo python3 makeECM.py
+sudo ./venv/bin/python makeECM.py
 ```
 The above command issues ```at+qcfg="usbnet",1``` via the python script
 
