@@ -255,7 +255,7 @@ ip a
 In our case, it is "192.168.70.129", we use this IP address later on
 
 
-# 7b) Set up the OpenRTiST server
+# 7b) Set up the OpenRTiST client
 
 The OpenRTiST client is hosted by the Ubuntu PC where the Quectel module is connected
 
