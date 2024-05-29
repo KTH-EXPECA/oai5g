@@ -103,6 +103,7 @@ Create a folder called mkdir and then download the previous scripts in it:
 
 ```
 mkdir quectel
+cd quectel
 ```
 
 Create a Python virtual enviroment and activate it:
