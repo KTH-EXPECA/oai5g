@@ -95,9 +95,22 @@ Insert SIM card into Quectel module
 
 ## 4) Configure Quectel module
 
-We need to configure the quectel module via [AT commands](https://files.waveshare.com/upload/7/78/Quectel_RG50xQ_RM5xxQ_Series_AT_Commands_Manual_V1.2.pdf).
+We need to configure the quectel module via [AT commands](https://files.waveshare.com/upload/7/78/Quectel_RG50xQ_RM5xxQ_Series_AT_Commands_Manual_V1.2.pdf)
 
-We issue the AT commands via [python scripts](https://github.com/KTH-EXPECA/openairinterface5g-docs/tree/main/docs/quectel).
+We issue the AT commands via [python scripts](https://github.com/KTH-EXPECA/openairinterface5g-docs/tree/main/docs/quectel)
+
+Create a folder called mkdir and then download the previous scripts in it:
+
+```
+mkdir quectel
+```
+
+Create a Python virtual enviroment and activate it:
+
+```
+python -m venv venv
+source venv/bin/activate
+```
 
 At the Ubuntu PC where the module is connected, turn the module into ECM mode:
 ```
