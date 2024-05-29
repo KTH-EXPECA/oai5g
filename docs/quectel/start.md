@@ -137,7 +137,7 @@ Set the PDP context to enable data exchange via the 5G network:
 
 ```
 cd ~/quectel
-sudo python3 set_conf.py 
+sudo ./venv/bin/python set_conf.py 
 ```
 
 The above command issues  ```at+cgdcont=1,"IP","oai"``` via the python script
@@ -156,7 +156,7 @@ The above commands issue ```at+cfun=0``` and ```at+cfun=1``` respectively
 Check the 5G connection to see if the Quectel module gets an IP address for communication with the gNB:
 
 ```
-sudo python3 get_ip.py
+sudo ./venv/bin/python get_ip.py
 ```
 
 Typically this 5G IP should be of the form "10.0.0.x"
