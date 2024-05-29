@@ -109,7 +109,7 @@ cd quectel
 Create a Python virtual enviroment and activate it:
 
 ```
-python -m venv venv
+python -m virtualenv venv
 source venv/bin/activate
 pip install pyserial
 ```
