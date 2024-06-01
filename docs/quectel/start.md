@@ -127,6 +127,8 @@ Unplug the USB cable, replug it and check the IP interfaces:
 ip a
 ```
 
+In that case, the Quectel IP address on the USB interface is  "192.168.225.1"
+
 A new interface with a name starting with "ex" should appear with an IP address of the form "192.168.225.xx"
 
 If the IP didnt show up, probably needs to be set manually via netplan:
@@ -135,8 +137,6 @@ If the IP didnt show up, probably needs to be set manually via netplan:
       dhcp4: no
       addresses: [192.168.225.37/24]
 ```
-
-In that case, the Quectel IP address on the USB interface is  "192.168.225.1"
 
 The above setup allows the exchange of IP traffic between the Quectel module and the Ubuntu PC via the USB cable
 
