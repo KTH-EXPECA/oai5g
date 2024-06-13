@@ -1,11 +1,11 @@
 # Quectel Module Setup on ARI robot
 
-Configure the dongle to be in qmi mode
+Make sure the dongle is in qmi mode
 ```
 at+qcfg="usbnet",0
 ```
 
-Install busybox and udhcpc
+Make sure busybox and udhcpc are installed
 ```
 sudo apt-get install udhcpc
 ```
