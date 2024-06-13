@@ -20,7 +20,20 @@ cd out
 sudo ./quectel-CM
 ```
 
+Then check if you got IP on wwan0 like this:
+```
+8: wwan0: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UNKNOWN group default qlen 1000
+    link/none 
+    inet 172.16.0.160/26 scope global wwan0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::1872:ba86:62c3:2fd5/64 scope link stable-privacy 
+       valid_lft forever preferred_lft forever
+```
+
+NOTE: if connection manager didnt work, unplug the dongle and replug it, right after wwan0 shows up, run `sudo ./quectel-CM` command.
+
 The driver adds to the default route. Delete it to avoid conflict.
 ```
 sudo ip route del default
 ```
+
