@@ -37,3 +37,8 @@ The driver adds to the default route. Delete it to avoid conflict.
 sudo ip route del default
 ```
 
+Add edge network route
+```
+sudo ip route add 10.70.70.0/24 via 172.16.0.161
+```
+
