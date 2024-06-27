@@ -247,6 +247,9 @@ Run the server with --timing argument to see performance on terminal:
 python main.py --timing
 ```
 
+The files containing the timestamps are saved in /tmp folder.
+
+
 Open a new terminal and check the ip address of the demo-oai interface:
 
 ```
@@ -314,3 +317,5 @@ Run the OpenRTiST client to connect to the OpenRTiST server via the 5G network:
 - The argument of `-o` creates a file that logs performance metrics such as frame roundtrip delay 
 - The argument of `--quiet` selects the display mode (if "True" then display is off)
 - The argument of `-u` sets the playback duration (loops the video file if duration exceeds duration of video file)
+
+The files containing the timestamps are saved in /tmp folder.
