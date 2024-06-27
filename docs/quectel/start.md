@@ -283,6 +283,12 @@ pip install poetry
 poetry install
 ```
 
+If the command gets stuck on "pending...", use the command:
+
+```
+export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
+```
+
 Set the "QT_QPA_PLATFORM" variable to offscreen to avoid display errors:
 
 ```
