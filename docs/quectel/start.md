@@ -19,7 +19,7 @@ In section 3.1, use ```git checkout v4.3.0.0``` instead of ```git checkout v4.6.
 At the Ubuntu PC that hosts both the OAI CN5G and OAI gNB, go to the ```oai-cn5g``` directory, in our case:
 
 ```
-cd /home/wlab/COTS_UE_GUIDE/oai-cn5g
+cd /home/wlab/panos/oai-cn5g
 ```
 
 Start the OAI CN5G:
@@ -33,7 +33,7 @@ The OAI CN5G is stopped by issuing ```docker compose up -d```
 Next, go to the directory that contains the ```nr-softmodem``` file, in our case:
 
 ```
-cd /home/wlab/COTS_UE_GUIDE/custom-openairinterface5g/cmake_targets/ran_build/build
+cd /home/wlab/panos/custom-openairinterface5g/cmake_targets/ran_build/build
 ```
 
 Start the OAI gNB:
