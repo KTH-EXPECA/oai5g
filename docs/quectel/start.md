@@ -222,7 +222,7 @@ The OpenRTiST server is hosted by the Ubuntu PC that hosts the 5G gNB and CN
 Download the OpenRTiST repository:
 
 ```
-git clone https://github.com/cmusatyalab/openrtist.git
+git clone https://github.com/samiemostafavi/openrtist.git
 cd openrtist
 git checkout timestamping
 cd server
