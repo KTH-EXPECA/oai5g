@@ -47,6 +47,7 @@ sudo ./nr-softmodem -O ../../../targets/PROJECTS/GENERIC-NR-5GC/CONF/gnb.sa.band
 Clone the following repository from Symcom:
 
 ```
+sudo apt install libpcsclite-dev
 git clone https://gitea.osmocom.org/sim-card/pysim.git
 cd pysim
 ```
